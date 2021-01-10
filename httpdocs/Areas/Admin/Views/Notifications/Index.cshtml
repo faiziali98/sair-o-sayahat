@@ -1,0 +1,105 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Admin.Notifications>
+@using SAIR_O_SIYAHAT_2.Models.Admin
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-bell"></i>Notifications</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style="background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                <h3 class="card-title">Notifications:</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered responsive nowrap dataTable dtr-inline collapsed" style="width:100%;" id="table_id">
+                    <thead>
+                        <tr>
+                            <th> Sr#</th>
+                            <th>
+                                Read at
+                            </th>
+                            <th>
+                                Notification
+                            </th>
+                            <th>
+                                User
+                            </th>
+                            <th>
+                                Created at
+                            </th>
+                            <th>
+                                View
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                @if (@item.ReadAt.HasValue)
+                                {
+                                    <td>
+                                        @item.ReadAt.Value.ToString("dd/MM/yyyy hh:mm:ss tt")
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        Unread
+                                    </td>
+                                }
+                                <td>
+                                    @item.Notification.DisplayName()
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserProxy.UserName)
+                                </td>
+                                <td>
+                                    @item.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss tt")
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-info" href="@Url.Action("ReadNotification","Admin",new { id=item.Id , url=item.Url})"> View</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            "ordering": false
+        });
+    });
+</script>

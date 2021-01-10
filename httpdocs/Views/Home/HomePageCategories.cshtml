@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.OfferSubCategory>
+<div class="col-md-8">
+    <div class="row">
+        @foreach(var item in Model.Take(6).Where(p=>p.IsActive == true).OrderBy(p=>p.CreatedAt))
+        {
+            if (item.CategoriesList.Count() > 0)
+            {
+                <div class="col-md-6 col-sm-12" style="margin-bottom: 20px;margin-top:20px;">
+                <div class="vender-detail">
+                    <img class="img-responsive" style="height: 300px;" src="@item.Thumbnail" alt="">
+                    <div class="overlay">
+                        <h2>@item.Name</h2>
+                        <a class="info" style="margin: 0 0 0 0;padding: 100px 100px;" href="/Home/Shop?subCategoryId=@item.Id&&filter=2">link here</a>
+                    </div>
+                </div>
+            </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.Ads
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+<style>
+    .form-style {
+        text-transform: capitalize;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header"></section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style=" background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                <h3 class="card-title">Ads Details</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" action="@Url.Action("Create","Ads")" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">Title</label>
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-style" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">Choose Feature Image</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="ImageFile" onchange="loadFile(event)" required>
+                                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                        <p id="imageName"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: 500;" for="inputName">Description</label>
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control form-style", @row = "4" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">IsActive</label>
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsActive)
+                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" data-toggle="modal" data-target="#myModal" value="Add" class="btn btn-success" />
+                            <a type="button" href="@Url.Action("Index",new { status=true})" class="btn btn-outline-danger">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add a new ad</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to create this ad.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <input type="submit" value="Add" class="btn btn-success" />
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script>
+    $("#ad-management-menu").addClass("menu-open");
+    var loadFile = function (event) {
+        var fileName = event.target.files[0].name;
+        $('#imageName').html(fileName);
+    };
+</script>

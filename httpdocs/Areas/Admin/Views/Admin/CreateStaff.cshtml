@@ -1,0 +1,266 @@
+﻿@model SAIR_O_SIYAHAT_2.Areas.Admin.ViewModel.StaffVM
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+
+<style>
+    .form-style {
+        text-transform: capitalize;
+    }
+    label{
+        font-weight:500!important;
+    }
+    input[type=checkbox] + label {
+        display: block;
+        margin: 0.2em;
+        cursor: pointer;
+        padding: 0.2em;
+    }
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+        input[type=checkbox] + label:before {
+            content: "\2714";
+            border: 0.1em solid #2A3F54;
+            border-radius: 0.2em;
+            display: inline-block;
+            height: 1.5em;
+            padding-left: 0.2em;
+            padding-bottom: 0.3em;
+            margin-right: 0.2em;
+            vertical-align: bottom;
+            color: transparent;
+            transition: .2s;
+        }
+
+        input[type=checkbox] + label:active:before {
+            transform: scale(0);
+        }
+
+        input[type=checkbox]:checked + label:before {
+            background-color: MediumSeaGreen;
+            border-color: MediumSeaGreen;
+            color: #fff;
+        }
+
+        input[type=checkbox]:disabled + label:before {
+            transform: scale(1);
+            border-color: #aaa;
+        }
+
+        input[type=checkbox]:checked:disabled + label:before {
+            transform: scale(1);
+            background-color: #bfb;
+            border-color: #bfb;
+        }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-user-shield"></i>Employees</li>
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Add Employee</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style="background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                <h3 class="card-title">Add Employee:</h3>
+            </div>
+            <div class="card-body">
+                <form id="form" action="@Url.Action("CreateStaff", "Admin")" method="post" enctype="multipart/form-data" autocomplete="off">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputfirstName">Username*</label>
+                                @Html.TextBoxFor(m => m.Username, new { @class = "form-control",@required = "required"  })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputlastName">Full Name</label>
+                                @Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control form-style", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="useremail">Email*</label>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control ", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputnumber">Phone Number*</label>
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control ", @type = "number", @min = "0", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputDescription">Password*</label>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @required = "required",@autocomplete = "new-password" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputSpentBudget">Confirm Password*</label>
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputName">Profile Picture*</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" accept="image/x-png,image/gif,image/jpeg" name="ImageFile" onchange="loadFile(event)" required>
+                                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                    <p id="imageName"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputDescription">Address*</label>
+                                @Html.TextAreaFor(m => m.Address, new { @class = "form-control form-style",@required = "required",@rows="4" })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 style="color:red;font-size:18px;">@ViewBag.Error</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="VendorManagement" value="true" name="VendorManagement">
+                                <label for="VendorManagement">Vendor Management</label>
+                                <input type="hidden" id="VendorManagement" value="false" name="VendorManagement">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="StaffManagement" value="true" name="StaffManagement">
+                                <label for="StaffManagement">Employees Management</label>
+                                <input type="hidden" id="StaffManagement" value="false" name="StaffManagement">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="PackageManagement" value="true" name="PackageManagement">
+                                <label for="PackageManagement">Packages Management</label>
+                                <input type="hidden" id="PackageManagement" value="false" name="PackageManagement">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="BlogsManagement" value="true" name="BlogsManagement">
+                                <label for="BlogsManagement">Banner/Blog/V Log Management</label>
+                                <input type="hidden" id="BlogsManagement" value="false" name="BlogsManagement">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="CategoryManagement" value="true" name="CategoryManagement">
+                                <label for="CategoryManagement">Category Management</label>
+                                <input type="hidden" id="CategoryManagement" value="false" name="CategoryManagement">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="OfferManagement" value="true" name="OfferManagement">
+                                <label for="OfferManagement">Admin Offer Management</label>
+                                <input type="hidden" id="OfferManagement" value="false" name="OfferManagement">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="AdManagement" value="true" name="AdManagement">
+                                <label for="AdManagement">Admin Ad Management</label>
+                                <input type="hidden" id="AdManagement" value="false" name="AdManagement">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" id="CustomerManagement" value="true" name="CustomerManagement">
+                                <label for="CustomerManagement">Registered Customers Management</label>
+                                <input type="hidden" id="CustomerManagement" value="false" name="CustomerManagement">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row" style="padding-left: 7.5px;">
+                        <a style="margin-right:12px;" href="@Url.Action("ViewStaff","Admin",new {active=true })" class="btn btn-outline-danger">Cancel</a>
+                        <input type="button" data-toggle="modal" data-target="#myModal" value="Submit" class="btn btn-success" >
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add Staff</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <p>
+                                        Are you sure you want to add staff
+                                    </p>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-success" value="Submit" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+@*<script src="~/Scripts/jquery.disableAutoFill.min.js"></script>*@
+<script>
+    $("#staff-menu").addClass("menu-open");
+    var loadFile = function (event) {
+        var fileName = event.target.files[0].name;
+        $('#imageName').html(fileName);
+    };
+    //$('#form').disableAutoFill({
+       
+    //});
+</script>
+

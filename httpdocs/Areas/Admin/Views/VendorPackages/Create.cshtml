@@ -1,0 +1,199 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.Package.VendorPackages
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+<style>
+    .form-style {
+        text-transform: capitalize;
+    }
+    .btn-inverse {
+        border: 1px solid #ced4da;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-box"></i>Packages</li>
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Assign Package</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style=" background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                <h3 class="card-title">Assign Package:</h3>
+            </div>
+            <div class="card-body">
+                <h3 style="font-size:18px;font-weight:700;color:red;">@ViewBag.Error</h3>
+                <form action="@Url.Action("Create", "VendorPackages")" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.AssignDate, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.ExpireDate, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.TotalBill, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.IsPaid, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.PackageId, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.OfferLeft, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.AdLeft, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.InvoiceValidity, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-3" style="display:inline-flex">
+                                <label>Total Bill:</label>
+                                <p style="margin-left:12px;" name="Bill" id="Bill"></p>
+                            </div>
+                            <div class="col-md-3" style="display:inline-flex">
+                                <label>Validity:</label>
+                                <p style="margin-left:12px;" name="Validity" id="Validity"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Select Vendor</label>
+                                    <select class="form-control selectpicker form-style" name="UserId" id="UserId" data-style="btn-inverse" data-live-search="true" required>
+                                        <option selected disabled value="">---Select Vendor---</option>
+                                        @foreach (var item in ViewBag.UserId)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Select Package</label>
+                                    <select class="form-control selectpicker form-style" name="PackageId" id="PackageId" onchange="getPackageDetails()" data-style="btn-inverse" data-live-search="true" required>
+                                        <option disabled selected value="">---Select Package---</option>
+                                        @foreach (var item in ViewBag.PackageId)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.PackageId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">Expiry Date</label>
+                                    <input type="text" class="form-control" id="ExpireDate1"  />
+                                </div>
+                            </div>
+                        </div>
+                        @Html.HiddenFor(model => model.AssignDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.HiddenFor(model => model.TotalBill, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @type = "number", @required = "required" } })
+                        @Html.HiddenFor(model => model.InvoiceValidity, new { htmlAttributes = new { @class = "form-control", @type = "number", @readonly = "readonly", @required = "required" } })
+                        @Html.HiddenFor(model => model.ExpireDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                    <div class="form-group">
+                        <a type="button" href="@Url.Action("Index","Packages",new {status=true })" class="btn btn-outline-danger">Cancel</a>
+                        <input type="button" data-toggle="modal" data-target="#myModal" value="Submit" class="btn btn-success" />
+                    </div>
+            </div>
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">New Invoice</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Are you sure you want to add this invoice.
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <input type="submit" value="Submit" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+
+        </div>
+        <!-- /.card-body -->
+</div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+<script>
+    $("#package-menu").addClass("menu-open");
+
+</script>
+<script type="text/javascript">
+
+    function getPackageDetails() {
+        debugger
+        var PackageId = $('#PackageId').val();
+        $.ajax({
+            url: 'FillPackageDetails',
+            type: "GET",
+            dataType: "JSON",
+            data: { PackageId: PackageId },
+            success: function (response) {
+                console.log(response);
+                $("#Bill").html("");
+                $("#Bill").html(response.Price);
+                $("#TotalBill").val("");
+                $("#TotalBill").val(response.Price);
+                $("#Validity").html("");
+                $("#Validity").html(response.Days + "  days");
+                $("#InvoiceValidity").val("");
+                $("#InvoiceValidity").val(response.Days);
+                setexpirydate(response.Days);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+</script>
+<script>
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
+    $("#AssignDate").val(today);
+</script>
+<script>
+    function setexpirydate(numberOfDaysToAdd)
+    {
+        debugger
+        var expire = new Date();
+        expire.setDate(expire.getDate() + numberOfDaysToAdd);
+        var dd = String(expire.getDate()).padStart(2, '0');
+        var mm = String(expire.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = expire.getFullYear();
+        expire = dd + '/' + mm + '/' + yyyy;
+        $("#ExpireDate1").val(expire);
+    }
+</script>

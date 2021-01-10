@@ -1,0 +1,440 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Site Metas -->
+    <title>SAIR-O-SIYAHAT</title>
+    <meta name="keywords" content="sairosiyahat">
+    <meta name="description" content="sairosiyahat website">
+    <meta name="author" content="sairosihayat">
+    <!-- Site Icons -->
+    <!-- <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="../images/sos 1logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../Content/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="../Content/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../Content/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../Content/custom.css">
+    <!-- Toastr -->
+    <link href="~/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <!-- Theme Custom style -->
+    <link href="~/plugins/bootstrap-select-1.13.12/css/bootstrap-select.min.css" rel="stylesheet" />
+    <!-- Sweet Alert Package-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <link href="~/Content/button.css" rel="stylesheet" />
+    <!--Script references. -->
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <style>
+        body {
+            text-transform: capitalize;
+            padding-right: 0px !important;
+        }
+
+        #map {
+            height: 412px;
+            width: 100% /* The width is the width of the web page */
+        }
+
+        .hoverText {
+            position: relative !important;
+        }
+
+            .hoverText .hoverTextText {
+                visibility: hidden !important;
+                background-color: black !important;
+                color: #fff !important;
+                text-align: center !important;
+                border-radius: 6px !important;
+                padding: 5px 12px !important;
+                /* Position the tooltip */
+                position: absolute !important;
+                z-index: 1 !important;
+                bottom: 100% !important;
+                left: -91% !important;
+            }
+
+            .hoverText:hover .hoverTextText {
+                visibility: visible !important;
+            }
+
+        @@media (min-width: 1024px) {
+            nav.navbar.bootsnav ul.nav > li > a {
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+        }
+
+        .nav-link {
+            padding: 0px;
+        }
+
+        @@media only screen and (max-width: 1199px) and (min-width: 991px) {
+            nav.navbar.bootsnav ul.nav > li > a {
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+        }
+
+        @@media (min-width: 1024px) {
+            nav.navbar.bootsnav li.dropdown ul.dropdown-menu li.dropdown > a.dropdown-toggle:before {
+                margin-top: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Start Main Top -->
+        <div class="main-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 ">
+                        <div class="our-social">
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/sairosiyahat.tourism.71" target="_blank" class="">
+                                        <img src="/images/facebook.png" style="width: 22px;">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/sair_.0._siyahat" target="_blank" class="">
+                                        <img src="/images/instagram-sketched.png" style="width: 20px;border-radius: 13px;">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.twitter.com/SSiyahat" target="_blank" class="">
+                                        <img src="/images/twitter.png" style="width: 19px;border-radius: 12px;">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/channel/UCZoVXCBZHi7RGmxOQnjnp_w" target="_blank" class="">
+                                        <img src="/images/youtube2.png" style="width: 19px;">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.linkedin.com/in/sair-o-siyahat-private-limited-583172199" target="_blank" class="">
+                                        <img src="/images/linkedin.png" style="width: 19px;">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="our-link">
+                            <ul>
+                                @if (@ViewBag.IsLogin != "LoggedIN")
+                                {
+                                    <li><a href="/Account/Login">Log in</a></li>
+                                    <li><a href="/Account/Register">Sign up</a></li>
+                                }
+                                else if (@ViewBag.IsLogin == "LoggedIN")
+                                {
+                                    <li>
+                                        <img src="@ViewBag.ImageAddress" style="border-radius:50%;width: 38px;height: 35px;" />
+                                        <span style="color: white;font-size: 17px;font-weight: 700;">@ViewBag.DisplayName</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Top -->
+        <div class="logo">
+            <a class="" href="/Home/Index"><img src="../images/sos 1logo.png" class="logo-img" alt=""></a>
+        </div>
+        <!-- Start Main Header -->
+        <header class="main-header">
+            <!-- Start Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+                <div class="container">
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <!-- End Header Navigation -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu" style="justify-content: center;">
+                        <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li id="tab_home" class="nav-item "><a class="nav-link" href="/Home/Index">Home</a></li>
+                            <li id="tab_aboutUs" class="nav-item"><a class="nav-link" href="/Home/AboutUs">About Us</a></li>
+                            <li id="tab_shop" class="dropdown">
+                                <a href="@Url.Action("Shop","Home")" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Shop</a>
+                                <ul class="dropdown-menu">
+                                    @{
+                                        Html.RenderAction("Header", "Home");
+                                    }
+                                </ul>
+                            </li>
+                            <li id="tab_blog" class="nav-item"><a class="nav-link" href="/Blog/Index">Blogs/V Logs</a></li>
+                            <li id="tab_contact" class="nav-item"><a class="nav-link" href="#footer">Contact Us</a></li>
+                            @if (@ViewBag.IsLogin == "LoggedIN" && @ViewBag.LoginType == "Customer")
+                            {
+                                <li id="tab_account" class="dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">My Account</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index","Carts")" class="nav-link ">My Cart</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("OrderStatus","Home",new { status=1})" class="nav-link ">Request Status</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("MyProfile","Home")" class="nav-link ">My Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form method="post" action="/Account/LogOff" id="logoutForm">
+                                                @Html.AntiForgeryToken()
+                                                <a style="margin-left: 9px;padding-bottom: 9px;padding-top: 9px;font-weight:800;" class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
+                                                    Logout
+                                                </a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else if (@ViewBag.IsLogin == "LoggedIN" && @ViewBag.LoginType == "Vendor" || ViewBag.LoginType == "vendorEmployee")
+                            {
+                                <li id="tab_account" class="dropdown">
+                                    <a class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Account</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("MyAccount","Home")" class="nav-link ">My Account</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("MyProfile","Home")" class="nav-link ">My Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form method="post" action="/Account/LogOff" id="logoutForm">
+                                                @Html.AntiForgeryToken()
+                                                <a style="margin-left: 9px;padding-bottom: 9px;padding-top: 9px;font-weight:800;" class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
+                                                    Logout
+                                                </a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else if (@ViewBag.IsLogin == "LoggedIN")
+                            {
+                                <li id="tab_account" class="dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">My Account</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index","Admin",new { area="admin"})" class="nav-link ">My Dashboard</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form method="post" action="/Account/LogOff" id="logoutForm">
+                                                @Html.AntiForgeryToken()
+                                                <a style="margin-left: 9px;padding-bottom: 9px;padding-top: 9px;font-weight:800;" class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
+                                                    Logout
+                                                </a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+            </nav>
+            <!-- End Navigation -->
+        </header>
+        <!-- End Main Header -->
+
+    </div>
+    @RenderBody()
+    @{
+        Html.RenderAction("PartialChatIcon", "Chat");
+    }
+
+    <!-- Start Footer  -->
+    <footer style="margin-top: 40px;">
+        <div class="footer-main" id="footer" style="padding:18px 0px!important;">
+            <div class="container" style="max-width:93%;margin-right:0;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="background-image:linear-gradient(to right,  #006eb3 0%,#018c01 100%);">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <div class="footer-widget" style="margin-top:23px;">
+                                    <h4>About Sair O Siyahat</h4>
+                                </div>
+                                <div class="footer-link">
+                                    <ul>
+                                        <li><a href="/General/TAC">Terms &amp; Conditions</a></li>
+                                        <li><a href="/General/PrivacyPolicy">Privacy Policy</a></li>
+                                        <li><a href="/General/UseOfInformation">Use Of Information</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <div class="footer-link" style="margin-top:23px;">
+                                    <h4>Information</h4>
+                                    <ul>
+                                        <li><a href="/General/Definition">Definitions</a></li>
+                                        <li><a href="/General/Restriction">Restrictions And Prohibitions</a></li>
+                                        <li><a href="/General/Limitation">Limitation Of Liability</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
+                                <div class="footer-link-contact" style="margin-top:23px;">
+                                    <h4>Contact Us</h4>
+                                    <ul>
+                                        <li>
+                                            <p style="">
+                                                <a style="cursor:pointer;" data-toggle="modal" href="#" data-target="#mapModal"><i class="fas fa-map-marker-alt"></i>Office No.51, Block C, Bank Square Market, Model Town, Lahore</a>
+                                                <a style="position: absolute;margin-left:12px;margin-top: -3px;font-size: 16px;" target="_blank" href="https://www.google.com/maps?ll=31.488225,74.325332&z=15&t=m&hl=en-US&gl=US&mapclient=apiv3"><i class="fas fa-external-link-alt"></i></a>
+                                            </p>
+                                        </li>
+                                        <li style="margin-top:20px;">
+                                            <p style=""><a style="cursor:pointer;text-transform:none;" href="mailto:sosprivatelimited@gmail.com"><i class="fas fa-envelope"></i>Email: sosprivatelimited@gmail.com</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget" style="margin-top:44px;">
+                        <h4>Download Our Mobile App</h4>
+                    </div>
+                    <div class="footer-link" style="margin-bottom:12px;">
+                        <img style="width:45%;" src="~/images/get_google.png" />
+                        <img style="width:45%;" src="~/images/app-store.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">
+            All Rights Reserved 2020. Designed by Sair O Siyahat Pvt. Ltd.
+        </p>
+    </div>
+    <!-- End copyright  -->
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+    <!-- Splash Screen  -->
+    @{ 
+        Html.RenderAction("SplashScreen", "Home");
+    }
+    <!-- Map Modal -->
+    <div id="mapModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="padding: 3px;">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/Scripts/jquery.superslides.min.js"></script>
+    <script src="~/Scripts/bootstrap-select.js"></script>
+    <script src="~/Scripts/inewsticker.js"></script>
+    <script src="~/Scripts/bootsnav.js"></script>
+    <script src="~/Scripts/images-loded.min.js"></script>
+    <script src="~/Scripts/isotope.min.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/baguetteBox.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.nicescroll.min.js"></script>
+    <script src="~/Scripts/form-validator.min.js"></script>
+    <script src="~/Scripts/contact-form-script.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <!-- Select Picker-->
+    <script src="~/plugins/bootstrap-select-1.13.12/js/bootstrap-select.min.js"></script>
+    <!-- Select Language-->
+    <script src="~/plugins/bootstrap-select-1.13.12/js/i18n/defaults-en_US.min.js"></script>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = { lat: 31.488225, lng: 74.325332 };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 15, center: uluru });
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({ position: uluru, map: map });
+        }
+    </script>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4IpjU3TNcaowegTbemzdinkWCUGQBFdc&libraries=places&callback=initMap"></script>
+    
+    <script>
+        $('#location_search').focus(function () {
+            $('.overlay-background').css({ 'opacity': '0.6' });
+            $('.location_box').css({ 'box-shadow': '0px 0px 16px rgba(0,0,0,0.9)' });
+        });
+        $('#location_select').focus(function () {
+            $('.overlay-background').css({ 'opacity': '0.6' });
+            $('.location_box').css({ 'box-shadow': '0px 0px 16px rgba(0,0,0,0.9)' });
+        });
+        $('#submit_search').focus(function () {
+            $('.overlay-background').css({ 'opacity': '0.6' });
+            $('.location_box').css({ 'box-shadow': '0px 0px 16px rgba(0,0,0,0.9)' });
+        });
+        $('#location_search').blur(function () {
+            $('.overlay-background').css({ 'opacity': '0.5' });
+            $('.location_box').css({ 'box-shadow': 'none' });
+        });
+        $('#location_select').blur(function () {
+            $('.overlay-background').css({ 'opacity': '0.5' });
+            $('.location_box').css({ 'box-shadow': 'none' });
+        });
+        $('#submit_search').blur(function () {
+            $('.overlay-background').css({ 'opacity': '0.5' });
+            $('.location_box').css({ 'box-shadow': 'none' });
+        });
+    </script>
+    <script src="~/Scripts/button.js"></script>
+
+
+
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <!--Reference the autogenerated SignalR hub script. -->
+    <script src="~/signalr/hubs"></script>
+    <!--SignalR script to update the chat page and send messages.-->
+    <script>
+        $(function () {
+            const userId = "@ViewBag.UserId";
+            // Reference the auto-generated proxy for the hub.
+            var chat = $.connection.chatNotification;
+            console.log(chat);
+            // Create a function that the hub can call back to display notifications.
+            chat.client.onNewChatNotification = function (count, recieverId) {
+                // Add the message to the page.
+                if (recieverId == userId) {
+                    $('#chat-badge').html(count);
+                }
+            };
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+
+            });
+        });
+    </script>
+    <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
+</body>
+</html>

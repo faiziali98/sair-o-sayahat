@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Admin.Chat>
+
+@if (Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        var count = @item.MessagesList.Where(p => p.ReadAt == null && p.ReceiverId == @ViewBag.UserId).Count();
+        <a style="padding-top:25px;padding-bottom:25px;" class="channel" onclick="openchat()" href="@Url.Action("Index","Chat",new { id = item.Id})">
+            @if (item.User1 == ViewBag.UserId)
+            {
+                <span class="avatar avatar-sm status mr-3 bg-primary rounded-circle" id="nameInitials">@item.uObject2.DisplayName.First()</span>
+                <div class="mr-auto">
+                    <h3 class="mb-2 fs-xxs lh-sm">@item.uObject2.DisplayName</h3>
+                    <p class="lh-sm">@item.uObject2.LoginType</p>
+                </div>
+            }
+            else
+            {
+                <span class="avatar avatar-sm status mr-3 bg-primary rounded-circle" id="nameInitials">@item.uObject1.DisplayName.First()</span>
+                <div class="mr-auto">
+                    <h3 class="mb-2 fs-xxs lh-sm">@item.uObject1.DisplayName</h3>
+                    <p class="lh-sm">@item.uObject1.LoginType</p>
+                </div>
+            }
+            @if(count != 0)
+            {
+                <span style="background-color: #f30606;width: 27px;text-align: center;border-radius: 87px;height: 26px;color: black;">@count</span>
+            }
+            <svg class="gi gi-person-fill align-self-center ml-3 fs-sm" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
+                <path d="M18 21a1 1 0 0 0 1-1 7 7 0 0 0-14 0 1 1 0 0 0 1 1z" />
+            </svg>
+        </a>
+    }
+}
+

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Ads>
+
+<div class="col-md-2 ads-home-page" style="margin-top:20px;">
+    <marquee style="font-size: 59px;font-weight: 700;font-family: TodayShop-Bold;height:100%;" behavior="scroll" onmouseover="this.stop();" onmouseout="this.start();" direction="down">
+        @foreach (var item in Model.Take(4))
+        {
+            <img style="width:100%;height: 120px;margin-bottom:80px;" src="@item.Thumbnail" alt="">
+        }
+    </marquee>
+</div>

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.Offers>
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<style>
+    .categories_post {
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 21px;
+    }
+
+        .categories_post img {
+            max-width: 100%;
+        }
+
+        .categories_post .categories_details {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: rgba(34, 34, 34, 0.8);
+            color: #fff;
+            transition: all 0.3s linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .categories_post .categories_details h5 {
+                margin-bottom: 0px;
+                font-size: 18px;
+                line-height: 26px;
+                text-transform: uppercase;
+                color: #fff;
+                position: relative;
+            }
+
+            .categories_post .categories_details p {
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 26px;
+                margin-bottom: 0px;
+            }
+
+            .categories_post .categories_details .border_line {
+                margin: 10px 0px;
+                background: #fff;
+                width: 100%;
+                height: 1px;
+            }
+
+        .categories_post:hover .categories_details {
+            background: rgb(0, 184, 212);
+        }
+</style>
+<!--================Offers Categorie Area =================-->
+<br />
+<section class="blog_categorie_area">
+    <div class="container">
+        <div class="row" style="margin:0 auto;justify-content:center;">
+            <h2 style="color:#00b4d8;font-size: 40px;font-weight:600;">Offers</h2>
+        </div>
+        <div class="row" style="margin:0 auto;justify-content:flex-end;">
+            <a class="btn btn-primary" type="button" href="/Offers/Create">Create New Offer</a>
+        </div>
+        <h3 style="color:red;font-size:25px;font-weight:700;">@ViewBag.cannotUpload</h3>
+        <div class="row">
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model.OrderBy(m => m.CreatedAt))
+                {
+                    <div class="col-lg-4">
+                        <div class="categories_post">
+                            <img src="@item.Thumbnail" style="width:100%;height:197px;" />
+                            <a href="/Offers/OfferDetail?Id=@item.Id">
+                                <div class="categories_details">
+                                    <div class="categories_text">
+                                        <h5 style="word-break: break-all;">@item.Name</h5>
+                                        <div class="border_line"></div>
+                                        <p>Rs.@item.UnitPrice</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>
+                    <h3 style="color:red;font-size:25px;font-weight:700;">You haven't uploaded any offer yet</h3>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--================Offers Categorie Area =================-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ("@ViewBag.CreateOffer" == "success")
+        {
+            swal("", "Offer Published Successfully", "success");
+        }
+    });
+</script>
+<script>
+    $('#tab_account').addClass("active");
+</script>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Admin.Notifications>
+@using SAIR_O_SIYAHAT_2.Models.Admin
+@{
+    var count = Model.Count();
+}
+<li class="nav-item dropdown">
+    <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="far fa-bell" style="font-size:19px!important;"></i>
+        <span id="unReadNotificationsCount" class="badge badge-warning navbar-badge" style="font-size:50%!important;">@count</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="width: 290px;">
+        <span  class="dropdown-item dropdown-header" style=" font-weight: 700;color: #00b4d8;"> Notifications</span>
+        <div class="dropdown-divider"></div>
+        <div id="notificationReceiver" style="height: 169px;overflow-y: auto;overflow-x: hidden;">
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div>
+                        <a href="@Url.Action("ReadNotification","Admin",new { id=item.Id , url=item.Url})" style="width:290px;padding: 5px 21px 14px 4px;" class="dropdown-item">
+                            <i style="color:#00b4d8;float:left;line-height:3;" class="fas fa-bell mr-2"></i>
+                            <p style="display: contents;font-size: 17px;"> @item.Notification.DisplayName()</p>
+                            <span class="float-right text-muted text-sm"></span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                }
+            }
+            else
+            {  /*
+                <div style="padding: 9px;">
+                    <h2 style="font-size:13px;font-weight:600;color:black;">
+                        No unread notifications
+                    </h2>
+                </div>
+                <div class="dropdown-divider"></div>
+                */
+            }
+        </div>
+        <div class="dropdown-divider"></div>
+        <a href="@Url.Action("Index","Notifications")" class="dropdown-item dropdown-footer">See All Notifications</a>
+    </div>
+</li>
+
+
+

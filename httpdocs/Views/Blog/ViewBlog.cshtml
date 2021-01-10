@@ -1,0 +1,33 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.Admin.Blog
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+
+<div class="container">
+    <!--your code should be here-->
+    <br />
+    <div class="" style="text-align: center;">
+        <h1 style="font-weight:700;color:#00b4d8;font-size: 41px;">
+            @Html.DisplayFor(model => model.Title)
+        </h1>
+    </div>
+    <br />
+    <img src="@Model.Thumbnail" style="width: 100%;height:500px;margin-bottom:20px;" />
+    <div>
+        
+        <p style="font-size: 19px;">
+            @Html.Raw(Model.Description)
+        </p>
+    </div>
+    @if(Model.Url != null)
+    {
+    <div class="row" style="margin:0 auto;">
+        <a href="@Model.Url" style="color: #00b4d8;text-transform: lowercase;">
+            @Model.Url
+        </a>
+    </div>
+    }
+</div>
+<script>
+    $('#tab_blog').addClass("active");
+</script>

@@ -1,0 +1,184 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.Package.PackageRequest
+<style>
+    .form-style {
+        text-transform: capitalize;
+    }
+
+    label {
+        font-weight: 500 !important;
+    }
+
+    input[type=checkbox] + label {
+        display: block;
+        margin: 0.2em;
+        cursor: pointer;
+        padding: 0.2em;
+    }
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+        input[type=checkbox] + label:before {
+            content: "\2714";
+            border: 0.1em solid #2A3F54;
+            border-radius: 0.2em;
+            display: inline-block;
+            height: 1.5em;
+            padding-left: 0.2em;
+            padding-bottom: 0.3em;
+            margin-right: 0.2em;
+            vertical-align: bottom;
+            color: transparent;
+            transition: .2s;
+        }
+
+        input[type=checkbox] + label:active:before {
+            transform: scale(0);
+        }
+
+        input[type=checkbox]:checked + label:before {
+            background-color: MediumSeaGreen;
+            border-color: MediumSeaGreen;
+            color: #fff;
+        }
+
+        input[type=checkbox]:disabled + label:before {
+            transform: scale(1);
+            border-color: #aaa;
+        }
+
+        input[type=checkbox]:checked:disabled + label:before {
+            transform: scale(1);
+            background-color: #bfb;
+            border-color: #bfb;
+        }
+</style>
+<div class="col-lg-3 col-md-6 col-md-12">
+    <div class="account-box">
+        <div class="service-box">
+            <div class="service-icon">
+                <a href="#" data-toggle="modal" data-target="#myModal"> <i class="fas fa-archive"></i> </a>
+            </div>
+            <div class="service-desc">
+                <h4>Custom Package Request</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!--Form Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" style="color:#00b4d8;font-size: 21px;font-weight: 700;">Package Request</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!--Form Modal body -->
+            <div class="modal-body">
+                @using (Html.BeginForm("PackageRequest", "Home",FormMethod.Post))
+                {
+
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputStatus">Title*</label>
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputStatus">Days*</label>
+                                    @Html.EditorFor(model => model.Days, new { htmlAttributes = new { @class = "form-control",@min="1", @required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Days, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row" style="">
+                                        <div class="col-md-7">
+                                            <input type="checkbox" id="AdLimit" value="true" name="AdLimit" onclick="enable1()">
+                                            <label for="AdLimit">Allow Ads</label>
+                                            <input type="hidden" id="AdLimit" value="false" name="AdLimit">
+                                        </div>
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.MaxAdLimit, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+                                            @Html.ValidationMessageFor(model => model.MaxAdLimit, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row" style="">
+                                        <div class="col-md-7">
+                                            <input type="checkbox" id="IsLimited" value="true" name="IsLimited" onclick="enable()">
+                                            <label for="IsLimited">Allow Offer</label>
+                                            <input type="hidden" id="IsLimited" value="false" name="IsLimited">
+                                        </div>
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.MaxOfferLimit, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+                                            @Html.ValidationMessageFor(model => model.MaxOfferLimit, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                Close
+                            </button>
+                            <input type="submit" value="Submit" style="background: #00b4d8;border: 1px solid #00b4d8;" class="btn btn-success" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--JavaScript-->
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script>
+    if ($('#IsLimited').is(':checked')) {
+        $('#MaxOfferLimit').css('display', 'block');
+    }
+    else {
+        $('#MaxOfferLimit').css('display', 'none');
+        $('#MaxOfferLimit').val("0");
+    }
+    if ($('#AdLimit').is(':checked')) {
+        $('#MaxAdLimit').css('display', 'block');
+    }
+    else {
+        $('#MaxAdLimit').css('display', 'none');
+        $('#MaxAdLimit').val("0");
+    }
+    function enable() {
+        if ($('#IsLimited').is(':checked')) {
+            $('#MaxOfferLimit').css('display', 'block');
+        }
+        else {
+            $('#MaxOfferLimit').css('display', 'none');
+            $('#MaxOfferLimit').val("0");
+        }
+    }
+    function enable1() {
+        if ($('#AdLimit').is(':checked')) {
+            $('#MaxAdLimit').css('display', 'block');
+        }
+        else {
+            $('#MaxAdLimit').css('display', 'none');
+            $('#MaxAdLimit').val("0");
+        }
+    }
+</script>

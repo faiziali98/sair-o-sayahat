@@ -1,0 +1,30 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.ViewModel.VendorEmployeeVM
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="add-employee" style="padding-right:0px!important;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!--Form Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" style="color:#00b4d8;font-size: 21px;font-weight: 700;">Add Employee</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!--Form Modal body -->
+            <div class="modal-body">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery-->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script>
+    var loadFile = function (event) {
+        var fileName = event.target.files[0].name;
+        $('#imageName').html(fileName);
+    };
+</script>
+

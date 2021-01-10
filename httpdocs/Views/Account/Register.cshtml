@@ -1,0 +1,92 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<style>
+    .attr-nav {
+        display: none;
+    }
+
+    .form-style {
+        text-transform: capitalize;
+    }
+</style>
+
+<div class="wrapper">
+    <!-- Login Form -->
+    <div class="site-content" style="">
+        <div class="container">
+            <div class="row" style="margin-top: 30px;display: flex;justify-content: center;">
+                <div class="col-md-6">
+                    <div>
+                        <h2 style="margin-bottom: 10px;font-family: 'Montserrat', sans-serif;color: #00b8d4;text-align: center;">
+                            <strong>Register</strong>
+                        </h2>
+                    </div>
+                    <form method="post" action="@Url.Action("Register","Account")" enctype="multipart/form-data" autocomplete="off">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label style="font-weight: bold;font-size: 15px;margin-bottom: 5px;display: block;color: #949494;"><strong>Display Name</strong></label>
+                            @Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control form-style" })
+                            @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: bold;font-size: 15px;margin-bottom: 5px;display: block;color: #949494;"><strong>Email</strong></label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: bold;font-size: 15px;margin-bottom: 5px;display: block;color: #949494;"><strong>Username</strong></label>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: 500;" for="inputName">Logo*</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="ImageFile" onchange="loadFile(event)" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                <p id="imageName"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: bold;font-size: 15px;margin-bottom: 5px;display: block;color: #949494;"><strong>Address</strong></label>
+                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @required = "required", @rows = "4" })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: bold;font-size: 15px;margin-bottom: 5px;display: block;color: #949494;"><strong>Phone</strong></label>
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @required = "required", @type = "number", @min = "0" })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: bold;font-size: 15px;margin-bottom: 5px;display: block;color: #949494;"><strong>Password</strong></label>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @required = "required", @autocomplete = "new-password" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" style="font-weight: bold;font-size: 15px;margin-bottom: 5px;display: block;color: #949494;"><strong>Confirm Password</strong></label>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" style="width: 100%;height: 50px;background-color: #00b8d4;border-color: #00b8d4;margin-bottom: 24px;" class="btn btn-primary" value="Register" />
+                        </div>
+                    </form>
+                    <p>Already a member? <a style="font-size:16px;font-weight:600;" href="/Account/Login">Login</a> here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Form Ends  -->
+</div>
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+<script>
+    var loadFile = function (event) {
+        var fileName = event.target.files[0].name;
+        $('#imageName').html(fileName);
+    };
+</script>

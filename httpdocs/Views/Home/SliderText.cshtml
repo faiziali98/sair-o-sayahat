@@ -1,0 +1,6 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Admin.SliderText>
+
+@foreach (var item in Model.Take(1))
+{
+    <marquee class="marqueetext" style="color: #ffffff;font-weight: 700;font-family: TodayShop-Bold;" behavior="scroll" direction="left">@item.BannerText</marquee>
+}

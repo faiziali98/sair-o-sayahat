@@ -1,0 +1,108 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.Offer.Offers
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+
+<style>
+    .form-style {
+        text-transform: capitalize;
+    }
+</style>
+<div class="wrapper">
+    <!-- Login Form -->
+    <div class="site-content" style="">
+        <div class="container">
+            <div class="row" style="margin-top: 30px;display: flex;justify-content: center;">
+                <div class="col-md-6">
+                    <div>
+                        <h2 style="margin-bottom: 10px;font-family: 'Montserrat', sans-serif;color: #00b8d4;text-align: center;">
+                            <strong>Add Offer</strong>
+                        </h2>
+                    </div>
+                    <form action="@Url.Action("Create", "Offers")" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label style="font-weight: 600;" for="inputStatus">Title</label>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control form-style", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 500;" for="inputName">Logo*</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" accept="image/x-png,image/gif,image/jpeg" name="ImageFile" onchange="loadFile(event)" required>
+                                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                    <p id="imageName"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 600;" for="inputStatus">Description</label>
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control form-style", @row = "4", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 600;" for="inputStatus">Sale Price</label>
+                                @Html.EditorFor(model => model.SalePrice, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.SalePrice, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 600;" for="inputStatus">Originial Price</label>
+                                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 600;" for="inputStatus">Select Category</label>
+                                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control  form-style", @required = "required" })
+                                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 600;" for="inputStatus">Offer Items</label>
+                                @Html.EditorFor(model => model.item, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.item, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <a type="button" class="btn btn-outline-danger" href="@Url.Action("Index","Offers")">Cancel</a>
+                                <input type="button" data-toggle="modal" data-target="#myModal" value="Publish Offer" style="background-color:#00b4d8;border-color:#00b4d8" class="btn btn-success" />
+                            </div>
+                        </div>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Publish Offer</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        Are you sure you want publish this offer
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                        <input type="submit" value="Publish" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Offer Form Ends  -->
+</div>
+
+
+<script>
+    var loadFile = function (event) {
+        var fileName = event.target.files[0].name;
+        $('#imageName').html(fileName);
+    };
+</script>
+<script>
+    $('#tab_account').addClass("active");
+</script>

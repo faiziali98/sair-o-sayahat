@@ -1,0 +1,911 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Package.Packages>
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<style>
+    .package:hover {
+        transform: scale(1.03);
+    }
+    h2 {
+        text-align: center;
+        
+    }
+    /* Slider */
+
+    .slick-slide {
+        margin: 0px 20px;
+    }
+
+        .slick-slide img {
+            width: 100%;
+        }
+
+    .hoverText {
+        position: relative !important;
+    }
+
+        .hoverText .hoverTextText {
+            visibility: hidden !important;
+            background-color: black !important;
+            color: #fff !important;
+            text-align: center !important;
+            border-radius: 6px !important;
+            padding: 5px 12px !important;
+            /* Position the tooltip */
+            position: absolute !important;
+            z-index: 1 !important;
+            bottom: 100% !important;
+            left: -91% !important;
+            margin-left: 61px;
+        }
+
+        .hoverText:hover .hoverTextText {
+            visibility: visible !important;
+        }
+    .btn-primary:hover {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+</style>
+<br />
+<div class="row" style="margin:0 auto;padding-left: 100px;">
+    <h1 style="color:#00b4d8;font-weight:700;font-size:28px;    padding-left: 19px;">
+        Packages:
+    </h1>
+</div>
+<div id="myPackages">
+    <div class="container">
+        <div class="row">
+            @{
+                List<int> packages = new List<int>();
+                List<int> freezepackages = new List<int>();
+                List<int> freezerequestpackages = new List<int>();
+                List<int> deactivatepackages = new List<int>();
+                packages.Add(0);
+                freezepackages.Add(0);
+                deactivatepackages.Add(0);
+                freezerequestpackages.Add(0);
+                ViewBag.Packages = packages;
+                ViewBag.freezePackages = freezepackages;
+                ViewBag.freezeRequestPackages = freezerequestpackages;
+                ViewBag.deactivatepackages = deactivatepackages;
+                ViewBag.ActivePackageId = 0;
+                ViewBag.ActiveInvoiceId = 0;
+                ViewBag.ActiveRequestPackageId = 0;
+                ViewBag.ActiveRequestInvoiceId = 0;
+            }
+            @if (Model.Count() > 0)
+            {
+                <!-- Active Package-->
+                foreach (var item in Model)
+                {
+                    foreach (var sub in item.VendorPackagesProxyList.Where(p => p.UserId == ViewBag.UserId))
+                    {
+                        if (sub.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.approved)
+                        {
+                            ViewBag.ActivePackageId = item.Id;
+                            ViewBag.ActiveInvoiceId = sub.Id;
+                            <div class="col-lg-3 col-md-6 package">
+                                <div style="text-align: center;height: 375px;border: 2px solid forestgreen;margin-top:19px;margin-bottom:19px;background-color: #ffffff;padding: 24px;border-radius: 5px;">
+                                    <h2>
+                                        <a class="hoverText" style="cursor:pointer;" data-toggle="modal" data-target="#@item.Id-2">
+                                            <span class="hoverTextText">Freeze Request</span>
+                                            <span class="fas fa-toggle-on" style="float: right;color: forestgreen;font-size: 22px;">
+                                            </span>
+                                        </a>
+                                        <span style="float:none;color: #00b4d8;font-weight: 600;">@item.Name</span>
+                                    </h2>
+                                    <p style="color: #827676;"><span>Rs.</span><span style="font-size: 38px;font-weight: 700;color:#00859b;">@item.Price</span></p>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Offers</span>
+                                        </div>
+                                        @if (item.IsLimited == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxOfferLimit</span>(@sub.OfferLeft left) </span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Ads</span>
+                                        </div>
+                                        @if (item.AdLimit == true)
+                                        {
+                                            <div class="col-8">
+                                                <span><span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxAdLimit</span>(@sub.AdLeft left) </span></span>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Validity</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <span style="color: #827676;">@item.Days days</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <span style="color: #202020;font-weight: 700;">Status</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <span style="color: #fff;font-weight: 600;font-size: 17px;background: #3a6c29;border-radius: 10px;padding: 4px 6px 4px 6px;">Active</span>
+                                        </div>
+                                    </div>
+                                    <a style="margin-top:14px;" type="button" data-toggle="modal" data-target="#@item.Id-1" href="" class="btn btn-primary">Deactivate Package</a>
+                                </div>
+                            </div>
+
+                            <!-- Deactivate Modal -->
+                            <div class="modal fade" id="@item.Id-1" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Deactivate Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Request to deactivate this package?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("DeactivatePackage", "PackageInvoice", new { id = sub.Id})">Deactivate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Toggle off Modal -->
+                            <div class="modal fade" id="@item.Id-2" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Freeze Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Request to Freeze this package?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("FreezePackage", "PackageInvoice", new { id = sub.Id})">Freeze</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                <!-- Activate Package Request-->
+                foreach (var item in Model)
+                {
+                    foreach (var sub in item.VendorPackagesProxyList.Where(p => p.UserId == ViewBag.UserId))
+                    {
+                        if (sub.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.activation_request)
+                        {
+                            ViewBag.ActiveRequestPackageId = item.Id;
+                            ViewBag.ActiveRequestInvoiceId = sub.Id;
+                            <div class="col-lg-3 col-md-6 package">
+                                <div style="box-shadow:0 0px 1px 0 rgba(0,0,0.1,-6.44), 0 0px 10px 0 rgba(0,0,0,0.32);height: 375px;text-align: center;border: 2px solid forestgreen;margin-top:19px;margin-bottom:19px;background-color: #ffffff;padding: 24px;border-radius: 5px;">
+                                    <h2>
+                                        <a class="hoverText" style="cursor:pointer;" data-toggle="modal" data-target="#@item.Id-2">
+                                            <span class="fas fa-window-close " style="float: right;color: forestgreen;font-size: 22px;">
+                                            </span>
+                                            <span class="hoverTextText">Freeze</span>
+                                        </a>
+                                        <span style="float:none;color: #00b4d8;font-weight: 600;">@item.Name</span>
+                                    </h2>
+                                    <p style="color: #827676;"><span>Rs.</span><span style="font-size: 38px;font-weight: 700;color:#00859b;">@item.Price</span></p>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Offers</span>
+                                        </div>
+                                        @if (item.IsLimited == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxOfferLimit</span>(@sub.OfferLeft left) </span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 5px 8px 5px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Ads</span>
+                                        </div>
+                                        @if (item.AdLimit == true)
+                                        {
+                                            <div class="col-8">
+                                                <span><span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxAdLimit</span>(@sub.AdLeft left) </span></span>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 5px 8px 5px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Validity</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <span style="color: #827676;">@item.Days days</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <span style="color: #202020;font-weight: 700;">Status</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <span style="color: #fff;font-weight: 600;font-size: 15px;background: #3a6c29;border-radius: 10px;padding: 4px 6px 4px 6px;">Requested For Activation</span>
+                                        </div>
+                                    </div>
+                                    <a style="margin-top:14px;" type="button" data-toggle="modal" data-target="#@item.Id-1" href="" class="btn btn-primary">Deactivate Package</a>
+                                </div>
+                            </div>
+
+                            <!-- Deactivate Modal -->
+                            <div class="modal fade" id="@item.Id-1" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Deactivate Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Request to deactivate this package?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("DeactivatePackage", "PackageInvoice", new { id = sub.Id})">Deactivate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cancel Package Activation Request Modal -->
+                            <div class="modal fade" id="@item.Id-2" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Freeze Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Cancel your request?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("CancelActivatePackage", "PackageInvoice", new { id = sub.Id})">Freeze</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                <!-- Freezed Packages-->
+                foreach (var item in Model)
+                {
+                    foreach (var sub in item.VendorPackagesProxyList.Where(p => p.UserId == ViewBag.UserId))
+                    {
+                        if (sub.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze)
+                        {
+                            {
+                                freezepackages.Add(item.Id);
+                                ViewBag.freezePackages = freezepackages;
+                            }
+                            <div class="col-lg-3 col-md-6 package">
+                                <div style="box-shadow:0 0px 1px 0 rgba(0,0,0.1,-6.44), 0 0px 10px 0 rgba(0,0,0,0.32);height: 375px;text-align: center;border: 2px solid #00b4d8;margin-top:19px;margin-bottom:19px;background-color: #ffffff;padding: 24px;border-radius: 5px;">
+                                    <h2>
+                                        <a class="hoverText" style="cursor:pointer;" data-toggle="modal" data-target="#@item.Id-2">
+                                            <span class="fas fa-toggle-off" style="float: right;color: forestgreen;font-size: 22px;"></span>
+                                            <span class="hoverTextText">Activate Request</span>
+                                        </a>
+
+                                        <span style="float:none;color: #00b4d8;font-weight: 600;">@item.Name</span>
+                                    </h2>
+                                    <p style="color: #827676;"><span>Rs.</span><span style="font-size: 38px;font-weight: 700;color:#00859b;">@item.Price</span></p>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Offers</span>
+                                        </div>
+                                        @if (item.IsLimited == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxOfferLimit</span>(@sub.OfferLeft left) </span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 5px 8px 5px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Ads</span>
+                                        </div>
+                                        @if (item.AdLimit == true)
+                                        {
+                                            <div class="col-8">
+                                                <span><span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxAdLimit</span>(@sub.AdLeft left) </span></span>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 5px 8px 5px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Validity</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <span style="color: #827676;">@item.Days days</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-12">
+                                            <span style="color: #202020;font-weight: 700;">Status</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <span style="color: #fff;font-weight: 600;font-size: 17px;background: #00b4d8;border-radius: 10px;padding: 4px 6px 4px 6px;">Freeze</span>
+                                        </div>
+                                    </div>
+                                    <a style="margin-top:14px;" type="button" data-toggle="modal" data-target="#@item.Id-1" href="" class="btn btn-primary">Deactivate Package</a>
+                                </div>
+                            </div>
+
+                            <!-- Deactivate Modal -->
+                            <div class="modal fade" id="@item.Id-1" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Deactivate Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Request to deactivate this package?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("DeactivatePackage", "PackageInvoice", new { id = sub.Id})">Deactivate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Active Modal -->
+                            <div class="modal fade" id="@item.Id-2" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Activate Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Request to activate this package?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("ActivatePackage", "PackageInvoice", new { id = sub.Id ,invoiceId = ViewBag.ActiveInvoiceId})">Activate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                <!-- Freezed Requested Packages-->
+                foreach (var item in Model)
+                {
+                    foreach (var sub in item.VendorPackagesProxyList.Where(p => p.UserId == ViewBag.UserId))
+                    {
+                        if (sub.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze_request)
+                        {
+                            {
+                                freezerequestpackages.Add(item.Id);
+                                ViewBag.freezeRequestPackages = freezerequestpackages;
+                            }
+                            <div class="col-lg-3 col-md-6 package">
+                                <div style="box-shadow:0 0px 1px 0 rgba(0,0,0.1,-6.44), 0 0px 10px 0 rgba(0,0,0,0.32);height: 375px;text-align: center;border: 2px solid #00b4d8;margin-top:19px;margin-bottom:19px;background-color: #ffffff;padding: 24px;border-radius: 5px;">
+                                    <h2>
+                                        <a class="hoverText" style="cursor:pointer;" data-toggle="modal" data-target="#@item.Id-2">
+                                            <span class="fas fa-window-close" style="float: right;color: forestgreen;font-size: 22px;"></span>
+                                            <span class="hoverTextText">Cancel Request</span>
+                                        </a>
+                                        <span style="float:none;color: #00b4d8;font-weight: 600;">@item.Name</span>
+                                    </h2>
+                                    <p style="color: #827676;"><span>Rs.</span><span style="font-size: 38px;font-weight: 700;color:#00859b;">@item.Price</span></p>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Offers</span>
+                                        </div>
+                                        @if (item.IsLimited == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxOfferLimit</span> (@sub.OfferLeft left) </span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Ads</span>
+                                        </div>
+                                        @if (item.AdLimit == true)
+                                        {
+                                            <div class="col-8">
+                                                <span><span style="color: #827676;"> <span style="font-weight: 700;color:black;">@item.MaxAdLimit</span> (@sub.AdLeft left) </span></span>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Validity</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <span style="color: #827676;">@item.Days days</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-12">
+                                            <span style="color: #202020;font-weight: 700;">Status</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <span style="color: #fff;font-weight: 600;font-size: 15px;background: #00b4d8;border-radius: 10px;padding: 4px 6px 4px 6px;">Requested For Freeze</span>
+                                        </div>
+                                    </div>
+                                    <a style="margin-top:14px;" type="button" data-toggle="modal" data-target="#@item.Id-1" href="" class="btn btn-primary">Deactivate Package</a>
+                                </div>
+                            </div>
+
+                            <!-- Deactivate Modal -->
+                            <div class="modal fade" id="@item.Id-1" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Deactivate Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Request to deactivate this package?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("DeactivatePackage", "PackageInvoice", new { id = sub.Id})">Deactivate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cancel Freeze Request And Active That Package Modal -->
+                            <div class="modal fade" id="@item.Id-2" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Activate Package</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Cancel freeze request and activate this package?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("CancelFreezePackage", "PackageInvoice", new { id = sub.Id})">Activate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                <!-- Deactivation Package-->
+                foreach (var item in Model)
+                {
+                    foreach (var sub in item.VendorPackagesProxyList.Where(p => p.UserId == ViewBag.UserId))
+                    {
+                        if (sub.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.deactivate_request)
+                        {
+                            {
+                                deactivatepackages.Add(item.Id);
+                                ViewBag.deactivatepackages = deactivatepackages;
+                            }
+                            <div class="col-lg-3 col-md-6 package">
+                                <div style="height: 375px;text-align: center;border: 2px solid red;margin-top:19px;margin-bottom:19px;background-color: #ffffff;padding: 24px;border-radius: 5px;">
+                                    <h2>
+                                        <span style="float:none;color: #00b4d8;font-weight: 600;">@item.Name</span>
+                                    </h2>
+                                    <p style="color: #827676;"><span>Rs.</span><span style="font-size: 38px;font-weight: 700;color:#00859b;">@item.Price</span></p>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Offers</span>
+                                        </div>
+                                        @if (item.IsLimited == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="font-weight: 700;color:black;">@item.MaxOfferLimit</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;    padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Ads</span>
+                                        </div>
+                                        @if (item.AdLimit == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="font-weight: 700;color:black;">@item.MaxAdLimit</span>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;    padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Validity</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <span style="color: #827676;">@item.Days days</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <span style="color: #202020;font-weight: 700;">Status</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <span style="color: #fff;font-weight: 600;font-size: 14px;background: #b32fe9;border-radius: 10px;    padding: 2px 8px 2px 8px;">Requested For Deactivation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                <!-- Pending Packages-->
+                foreach (var item in Model)
+                {
+                    foreach (var sub in item.VendorPackagesProxyList.Where(p => p.UserId == ViewBag.UserId))
+                    {
+                        if (sub.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                        {
+                            {
+                                packages.Add(item.Id);
+                                ViewBag.Packages = packages;
+                            }
+                            <div class="col-lg-3 col-md-6 package">
+                                <div style="box-shadow:0 0px 1px 0 rgba(0,0,0.1,-6.44), 0 0px 10px 0 rgba(0,0,0,0.32);height: 375px;text-align: center;border: 2px solid #b32fe9;margin-top:19px;margin-bottom:19px;background-color: #ffffff;padding: 24px;border-radius: 5px;">
+                                    <h2>
+                                        <span style="float:none;color: #00b4d8;font-weight: 600;">@item.Name</span>
+                                    </h2>
+                                    <p style="color: #827676;"><span>Rs.</span><span style="font-size: 38px;font-weight: 700;color:#00859b;">@item.Price</span></p>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Offers</span>
+                                        </div>
+                                        @if (item.IsLimited == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="font-weight: 700;color:black;">@item.MaxOfferLimit</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;    padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Ads</span>
+                                        </div>
+                                        @if (item.AdLimit == true)
+                                        {
+                                            <div class="col-8">
+                                                <span style="font-weight: 700;color:black;">@item.MaxAdLimit</span>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="col-8">
+                                                <span style="background: #4eb4c8;color: #fff;    padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-4">
+                                            <span style="color: #202020;font-weight: 700;">Validity</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <span style="color: #827676;">@item.Days days</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-left:18px;">
+                                        <div class="col-12">
+                                            <span style="color: #202020;font-weight: 700;">Status</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <span style="color: #fff;font-weight: 600;font-size: 17px;background: #b32fe9;border-radius: 10px;padding: 2px 8px 2px 8px;">Pending</span>
+                                        </div>
+                                    </div>
+                                    <a style="margin-top:14px;" type="button" data-toggle="modal" data-target="#@item.Id" href="" class="btn btn-primary">Deactivate Package</a>
+                                </div>
+                            </div>
+                            <!-- Expire Request Modal -->
+                            <div class="modal fade" id="@item.Id" style="padding-right:0!important;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Cancel Request</h2>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p style="font-size: 18px;font-weight: 600;">
+                                                Do you want to cancel your request?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" class="btn btn-primary" href="@Url.Action("ExpirePackage", "PackageInvoice", new { id = sub.Id})">Cancel Request</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                foreach (var item in Model.Where(p => p.IsActive == true && p.ShowToAll == true))
+                {
+                    ViewBag.Yes = "No";
+                    ViewBag.Ok = "No";
+                    ViewBag.Good = "No";
+                    ViewBag.requestFreeze = "No";
+                    foreach (var package in ViewBag.Packages)
+                    {
+                        if (item.Id == package)
+                        {
+                            ViewBag.Yes = "Yes";
+                        }
+                    }
+                    foreach (var freeze in ViewBag.freezePackages)
+                    {
+                        if (item.Id == freeze)
+                        {
+                            ViewBag.Ok = "Yes";
+                        }
+                    }
+                    foreach (var deactivate in ViewBag.deactivatepackages)
+                    {
+                        if (item.Id == deactivate)
+                        {
+                            ViewBag.Good = "Yes";
+                        }
+                    }
+                    foreach (var freezeRequest in ViewBag.freezeRequestPackages)
+                    {
+                        if (item.Id == freezeRequest)
+                        {
+                            ViewBag.requestFreeze = "Yes";
+                        }
+                    }
+                    if (ViewBag.Yes != "Yes" && ViewBag.requestFreeze != "Yes" && ViewBag.ActivePackageId != item.Id && ViewBag.ActiveRequestPackageId != item.Id && ViewBag.Ok != "Yes" && ViewBag.Good != "Yes")
+                    {
+                        <div class="col-lg-3 col-md-6 package">
+                            <div style="box-shadow:0 0px 1px 0 rgba(0,0,0.1,-6.44), 0 0px 10px 0 rgba(0,0,0,0.32); height: 375px;text-align: center;margin-top:19px;margin-bottom:19px;background-color: #ffffff;padding: 24px;border-radius: 5px;">
+                                <h2><span style="float:none;color: #00b4d8;font-weight: 600;">@item.Name</span></h2>
+                                <p style="color: #827676;"><span>Rs.</span><span style="font-size: 38px;font-weight: 700;color:#00859b;">@item.Price</span></p>
+                                <div class="row" style="padding-left:18px;">
+                                    <div class="col-4">
+                                        <span style="color: #202020;font-weight: 700;">Offers</span>
+                                    </div>
+                                    @if (item.IsLimited == true)
+                                    {
+                                        <div class="col-8">
+                                            <span style="font-weight: 700;color:black;">@item.MaxOfferLimit</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-8">
+                                            <span style="background: #4eb4c8;color: #fff;    padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="row" style="padding-left:18px;">
+                                    <div class="col-4">
+                                        <span style="color: #202020;font-weight: 700;">Ads</span>
+                                    </div>
+                                    @if (item.AdLimit == true)
+                                    {
+                                        <div class="col-8">
+                                            <span style="font-weight: 700;color:black;">@item.MaxAdLimit</span>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="col-8">
+                                            <span style="background: #4eb4c8;color: #fff;    padding: 2px 8px 2px 8px;border-radius: 10px;">Unlimited</span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="row" style="padding-left:18px;">
+                                    <div class="col-4">
+                                        <span style="color: #202020;font-weight: 700;">Validity</span>
+                                    </div>
+                                    <div class="col-8">
+                                        <span style="color: #827676;">@item.Days days</span>
+                                    </div>
+                                </div>
+                                <a style="margin-top:75px;" type="button" data-toggle="modal" data-target="#@item.Id" href="" class="btn btn-primary">Purchase Now</a>
+                            </div>
+                        </div>
+
+                        <!-- The Modal -->
+                        <div class="modal fade" id="@item.Id" style="padding-right:0!important;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h2 style="font-weight:700;color:#00b4d8;" class="modal-title">Purchase</h2>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <p style="font-size: 18px;font-weight: 600;">
+                                            Request to purchase this package?
+                                        </p>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <a type="button" class="btn btn-primary" href="@Url.Action("Add", "PackageInvoice", new { id = @item.Id, price = @item.Price })">Purchase</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ("@ViewBag.DeactivatePackage" == "success")
+        {
+            swal("", "Your request is submitted successfully", "success");
+        }
+        if ("@ViewBag.requestPackage" == "success")
+        {
+            swal("", "Your request is submitted successfully", "success");
+        }
+        if ("@ViewBag.freezePackage" == "success")
+        {
+            swal("", "Your Request is submitted suucessfully", "success");
+        }
+        if ("@ViewBag.activatePackage" == "success")
+        {
+            swal("", "Your request is submitted successfully", "success");
+        }
+        if ("@ViewBag.expirePackage" == "success")
+        {
+            swal("", "You request is cancelled successfully", "success");
+        }
+        if ("@ViewBag.NewUser" == "True")
+        {
+            swal("", "Currently No Package has been purchased", "");
+        }
+        if ("@ViewBag.activateRequestError" == "error")
+        {
+            swal("", "You have already requested for activation for another package", "");
+        }
+        if ("@ViewBag.cancelActivatePackage" == "success")
+        {
+            swal("Package Freezed", "Yo have cancelled your request for activation,", "success");
+        }
+        if ("@ViewBag.cancelFreezePackage" == "success")
+        {
+            swal("Package Activated", "Yo have cancelled your request for freeze,", "success");
+        }
+    });
+</script>
+<script>
+    $('#tab_account').addClass("active");
+</script>
+

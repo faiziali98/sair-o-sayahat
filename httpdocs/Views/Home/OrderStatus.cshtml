@@ -1,0 +1,254 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta>
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<style>
+    @@media only screen and (max-width: 991px) {
+        .order-status {
+            margin-left: 0px;
+        }
+
+        .table td {
+            border-top: none;
+        }
+    }
+</style>
+<br />
+<div class="cart-box-main">
+    <div class="container">
+        @if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.approved)
+        {
+            <div class="row" style="margin:0 auto;justify-content:center;">
+                <a href="/Home/OrderStatus?status=0" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-secondary">Approved</a>
+                <a href="/Home/OrderStatus?status=1" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Approved by admin</a>
+                <a href="/Home/OrderStatus?status=2" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Pending</a>
+                <a href="/Home/OrderStatus?status=3" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Cancelled</a>
+            </div>
+        }
+        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.approvedbyadmin)
+        {
+            <div class="row" style="margin:0 auto;justify-content:center;">
+                <a href="/Home/OrderStatus?status=0" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Approved</a>
+                <a href="/Home/OrderStatus?status=1" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-secondary">Approved by admin</a>
+                <a href="/Home/OrderStatus?status=2" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Pending</a>
+                <a href="/Home/OrderStatus?status=3" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Cancelled</a>
+            </div>
+        }
+        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.pending)
+        {
+            <div class="row" style="margin:0 auto;justify-content:center;">
+                <a href="/Home/OrderStatus?status=0" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Approved</a>
+                <a href="/Home/OrderStatus?status=1" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Approved by admin</a>
+                <a href="/Home/OrderStatus?status=2" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-secondary">Pending</a>
+                <a href="/Home/OrderStatus?status=3" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Cancelled</a>
+            </div>
+        }
+        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.rejected)
+        {
+            <div class="row" style="margin:0 auto;justify-content:center;">
+                <a href="/Home/OrderStatus?status=0" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Approved</a>
+                <a href="/Home/OrderStatus?status=1" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Approved by admin</a>
+                <a href="/Home/OrderStatus?status=2" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-primary">Pending</a>
+                <a href="/Home/OrderStatus?status=3" style="margin-right:8px;margin-bottom:6px;" type="button" class="btn btn-secondary">Cancelled</a>
+            </div>
+        }
+
+        <br />
+        @if (Model.Count() > 0)
+        {
+            <div class="row" style="margin:0 auto;">
+                <h3 style="color:#00b4d8;font-weight:700;font-size: 31px;">Request Details</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Order#
+                                    </th>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Offer Name
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+                                    <th>
+                                        Paid
+                                    </th>
+                                    @if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.pending)
+                                    {
+                                        <th>
+                                            Cancel
+                                        </th>
+                                    }
+                                    else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.approved)
+                                    {
+                                        <th>
+                                            Token
+                                        </th>
+                                        <th>
+                                            Rating
+                                        </th>
+
+                                    }
+                                    else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.rejected)
+                                    {
+                                        <th>
+                                            Status
+                                        </th>
+                                    }
+                                    else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.approvedbyadmin)
+                                    {
+                                        <th>
+                                            Status
+                                        </th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.OrderByDescending(p=>p.CreatedAt))
+                                {
+                                <tr>
+                                    <td style="color:#00b4d8;">
+                                        @item.Id
+                                    </td>
+                                    <td>
+                                        <img src="@item.OfferObject.Thumbnail" style="width: 87px;height: 112px;" />
+                                    </td>
+                                    <td>
+                                        @item.OfferObject.Name
+                                    </td>
+                                    <td>
+                                        @item.Quantity
+                                    </td>
+                                    @if (item.Paid == true)
+                                    {
+                                        <td>
+                                            <span style="background:#25bbb0;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                Paid
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span style="background:#25bbb0;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                @item.Token
+                                            </span>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <span style="background:#007bff;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                Not Paid
+                                            </span>
+                                        </td>
+                                    }
+                                    @if (item.Paid == false && item.IsActive == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.pending)
+                                    {
+                                        <td>
+                                            <a style="color: #00b4d8;" href="@Url.Action("CancelRequest","Home",new { id=item.Id})">
+                                                Cancel
+                                            </a>
+                                        </td>
+                                    }
+                                    else if (item.IsActive == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.rejected)
+                                    {
+                                        <td>
+                                            <span style="background:#25bbb0;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                Cancelled
+                                            </span>
+                                        </td>
+                                    }
+                                    else if (item.IsActive == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.approvedbyadmin)
+                                    {
+                                        <td>
+                                            <span style="background:#00b8d4;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                Pending Approval From Vendor
+                                            </span>
+                                        </td>
+                                    }
+                                    else if (item.IsActive == SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.approved && item.Rating == null)
+                                    {
+                                        <td>
+                                            <a style="color: #00b4d8;" href="/Home/RequestDetail?id=@item.Id">Add Rating</a>
+                                        </td>
+                                    }
+                                    else if (item.Rating != null)
+                                    {
+                                        if (item.Rating == 1)
+                                        {
+                                            <td>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                            </td>
+                                        }
+                                        if (item.Rating == 2)
+                                        {
+                                            <td>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                            </td>
+                                        }
+                                        if (item.Rating == 3)
+                                        {
+                                            <td>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                            </td>
+                                        }
+                                        if (item.Rating == 4)
+                                        {
+                                            <td>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:grey;" class="fas fa-star "></i>
+                                            </td>
+                                        }
+                                        if (item.Rating == 5)
+                                        {
+                                            <td>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                                <i style="color:#faca51;" class="fas fa-star "></i>
+                                            </td>
+                                        }
+                                    }
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h3 style="font-weight:700;margin-top: 43px;color:red;font-size: 20px;text-align: center;">There are no requests to show</h3>
+        }
+    </div>
+</div>
+<script>
+    $('#tab_account').addClass("active");
+</script>
+
+
+<!--================Ads Categorie Area =================-->
+

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.ApplicationUser>
+
+<!-- Start Titanium Agencies Feed  -->
+<div class="featured-agencies-box">
+    <div class="titanium main-instagram owl-carousel owl-theme">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img style="width:91%!important;padding:0.1px;" src="@item.ImageUrl" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- End Titanium Agencies Feed  -->

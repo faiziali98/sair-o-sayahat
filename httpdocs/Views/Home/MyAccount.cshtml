@@ -1,0 +1,139 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<style>
+    .account-box {
+        height: 225px;
+        border: 1px solid #d2c1c1;
+        box-shadow: 0 0px 1px 0 rgba(0,0,0.1,-6.44), 0 0px 10px 0 rgba(0,0,0,0.32);
+        border-radius: 12px;
+    }
+    .service-desc h4 {
+        text-decoration: none;
+    }
+    .service-desc p {
+        text-decoration: underline;
+    }
+    .service-icon a {
+        box-shadow: 0px 0px 0.01px 5px rgba(0, 9, 0, 0.06);
+    }
+        .service-icon a:hover {
+            background: rgb(0, 184, 212);
+        }
+    
+</style>
+
+<div class="wrapper">
+    <!-- Start My Account  -->
+    <div class="my-account-box-main">
+        <div class="container">
+            <h3 style="color:red;">@ViewBag.Error</h3>
+            <div class="my-account-page">
+                <div class="row">
+                    <!--Package Management-->
+                    <div class="col-lg-3 col-md-6 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="/Package/Index">
+                                        <i class="fas fa-th-large"></i>
+                                    </a>
+                                </div>
+                                <div class="service-desc">
+                                    <h4>Package Management</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--My Requests-->
+                    <div class="col-lg-3 col-md-6 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="/PackageInvoice/Index?status=0">
+                                        <img style="width:37px;height:37px;margin-bottom:25px;" src="~/images/5.png" />
+                                    </a>
+                                </div>
+                                <div class="service-desc">
+                                    <h4>My Requests</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Ad Management-->
+                    <div class="col-lg-3 col-md-6 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="/AdManagement/Index"><img style="width:37px;height:37px;margin-bottom:25px;" src="~/images/4.png" /> </a>
+                                </div>
+                                <div class="service-desc">
+                                    <h4>Ads Management</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Offer Management-->
+                    <div class="col-lg-3 col-md-6 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="/Offers/Index"> <img style="width:37px;height:37px;margin-bottom:25px;" src="~/images/box.png" /> </a>
+                                </div>
+                                <div class="service-desc">
+                                    <h4>Offer Management</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--//Customers Request on Offers -->
+                    <div class="col-lg-3 col-md-6 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="@Url.Action("CustomerRequest","Home",new { status = SAIR_O_SIYAHAT_2.Models.Offer.OfferMeta.Status.approvedbyadmin})"> <img style="width:37px;height:37px;margin-bottom:25px;" src="~/images/1.png" /> </a>
+                                </div>
+                                <div class="service-desc">
+                                    <h4>Customers Request</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Custome Package Request -->
+                    @{
+                        Html.RenderAction("PartialPackageRequest", "Home");
+                    }
+                    @if (ViewBag.EmployeeManagement == true)
+                    {
+                        <div class="col-lg-3 col-md-6 col-md-12">
+                            <div class="account-box">
+                                <div class="service-box">
+                                    <div class="service-icon">
+                                        <a href="@Url.Action("ViewVendorEmployee","VendorEmployee")"><i class="fas fa-users"></i></a>
+                                    </div>
+                                    <div class="service-desc">
+                                        <h4>Employee Management</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        if ("@ViewBag.AddRequest" == "success")
+        {
+            swal("", "Your request is submitted successfully", "success");
+        }
+    });
+</script>
+<script>
+    $('#tab_account').addClass("active");
+</script>

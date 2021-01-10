@@ -1,0 +1,165 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Admin.Blog>
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+
+<style>
+    .blog-list {
+        margin-top: 18px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+    }
+
+        .blog-list div {
+            margin-top: 9px;
+        }
+
+        .blog-list button {
+            margin-bottom: 8px;
+        }
+
+        .blog-list:hover {
+            box-shadow: 0px 0px 8px 8px rgba(0, 0, 0, .15);
+        }
+
+    h2 {
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+
+
+<div class="wrapper">
+    <!-- Start Slider -->
+    @{
+        Html.RenderAction("HomePageSlider", "Home");
+    }
+    <!-- End Slider -->
+    <br />
+    <div>
+        <div class="row" style="display: flex;justify-content: center;margin: 0 auto;padding-top:12px;">
+            <h2 style="font-weight: 700;font-size: 27px;margin-bottom: 20px;">
+                Titanium Agencies
+            </h2>
+        </div>
+        @{
+            Html.RenderAction("TitaniumAgency", "Home");
+        }
+
+    </div>
+    <br />
+    <!-- Start Categories  -->
+    <div class="categories-shop" style="padding-bottom:10px;padding-top:10px;">
+        <div class="row" style="display: flex;justify-content: center;margin: 0 auto;">
+            @{
+                Html.RenderAction("LeftHomePageAds", "Home");
+            }
+            @{
+                Html.RenderAction("HomePageCategories", "Home");
+            }
+            @{
+                Html.RenderAction("HomePageAds", "Home");
+            }
+        </div>
+        <br />
+        <div style=" justify-content: center;display: flex;margin:0 auto;">
+            <a href="/Home/Shop" type="button" style="background-color: #00b4d8;border-color: #00b4d8;" class="btn btn-primary">View All</a>
+        </div>
+    </div>
+    <!-- End Categories -->
+    <br />
+    <div style="">
+        <div class="row" style="display: flex;justify-content: center;margin: 0 auto;padding-top:12px;">
+            <h2 style="font-weight: 700;font-size: 27px;margin-bottom: 20px;">
+                Featured Clients
+            </h2>
+        </div>
+        <!-- Start Featured Agencies Feed  -->
+        @{
+            Html.RenderAction("FeatureAgency", "Home");
+        }
+
+    </div>
+
+
+    <br />
+    <div style="background-color: rgba(224, 224, 224,1.0);">
+        <div class="row" style="display: flex;justify-content: center;margin: 0 auto;padding-top:12px;">
+            <h2 style="font-weight: 700;font-size: 27px;">
+                Recent From The Blogs/VLogs
+            </h2>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row" style="color:#202020;">
+                            @foreach (var item in Model.Take(4))
+                            {
+                                <div class="col-md-3 blog-list">
+                                    <div>
+                                        <img style="width: 100%;height: 185px;margin-bottom: 12px;position:relative;" src="@item.Thumbnail" />
+                                    </div>
+                                    <h4 style="font-weight:700;padding-bottom: 0px;">@item.Title</h4>
+                                    <p style="color: black;margin: 4px;">
+
+                                    </p>
+                                    <a type="button" href="/Blog/Detail?id=@item.Id" style="background-color: #00b8d4;border-color: #00b8d4;width: 100%;" class="btn btn-primary">Read More</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container">
+                        <div class="row" style="color:#202020;">
+                            @{ var counter = 0;}
+                            @foreach (var item in Model.Take(8))
+                            {
+                                counter++;
+                                if (counter >= 5)
+                                {
+                                    <div class="col-md-3 blog-list">
+                                        <div>
+                                            <img style="width: 100%;height: 185px;margin-bottom: 12px;position:relative;" src="@item.Thumbnail" />
+                                        </div>
+                                        <h4 style="font-weight:700;padding-bottom: 0px;">@item.Title</h4>
+                                        <p style="color: black;margin: 4px;">
+
+                                        </p>
+                                        <a type="button" href="/Blog/Detail?id=@item.Id" style="background-color: #00b8d4;border-color: #00b8d4;width: 100%;" class="btn btn-primary">Read More</a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" style="top:47%;height:6%;left:14px;" role="button" data-slide="prev">
+                <span class="fas fa-arrow-left" style="color: black;font-size: 29px;" aria-hidden="true"></span>
+                <span style="color:aquamarine;" class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" style="top:47%;height:6%;right:14px;" role="button" data-slide="next">
+                <span class="fas fa-arrow-right" style="color: black;font-size: 29px;" aria-hidden="true"></span>
+                <span style="color:aquamarine;" class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <br />
+</div>
+<script>
+    $('#tab_home').addClass("active");
+</script>
+<script>
+    $(window).on('load', function () {
+         $('#popup_model').modal('show');
+    });
+</script>
+
+
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.Offers>
+
+@if (Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="item" style="padding:20px!important;">
+            <div class="products-single fix">
+                <div class="box-img-hover">
+                    <img src="@item.Thumbnail" style="width: 100%!important;height: 270px;border:none!important;margin-bottom:0px;" class="img-fluid" alt="Image">
+                    <div class="mask-icon">
+                        <a class="cart" href="/Home/OfferDetail?id=@item.Id">View</a>
+                    </div>
+                </div>
+                <div class="why-text" style=" height: 116px;">
+                    <h4>@item.Name</h4>
+                    @if (item.SalePrice > 0)
+                    {
+                        <h5 style="color: #00b8d4;"><del>Rs.@item.UnitPrice</del> Rs.@item.SalePrice</h5>
+                    }
+                    else
+                    {
+                        <h5 style="color: #00b8d4;">Rs.@item.UnitPrice</h5>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,87 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.Admin.SliderText
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-box"></i>Banners</li>
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Banner Message</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style="background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                <h3 class="card-title">Banner Message</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" action="@Url.Action("Edit","SliderTexts")" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.CreatedAt)
+                    @Html.HiddenFor(model => model.UserId)
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">Slider Text*</label>
+                                    @Html.TextAreaFor(model => model.BannerText, new { @class = "form-control form-style", @rows = "2", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.BannerText, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a href="@Url.Action("Index",new { status=true})" class="btn btn-outline-danger">Cancel</a>
+                            <input type="button" data-toggle="modal" data-target="#myModal" value="Update" class="btn btn-success" />
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">
+                                        Banner Message
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to add this to Banner Message.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Update" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script>
+    $("#banner-menu").addClass("menu-open");
+</script>

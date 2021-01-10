@@ -1,0 +1,232 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.Offers>
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<style>
+    @@media (max-width:575px){
+        #list-view{
+            display:block;
+        }
+        #grid-view{
+            display:none;
+        }
+    }
+    @@media(min-width:575px){
+        #list-view {
+            display: none;
+        }
+
+        #grid-view {
+            display: block;
+        }
+    }
+    .dropup .dropdown-toggle::after {
+        display: none;
+    }
+    .toolbar-sorter-right .bootstrap-select.form-control:not([class*="col-"]){
+        width:77%;
+    }
+</style>
+<div class="wrapper">
+    <!-- Start Shop Page  -->
+    <div class="shop-box-inner" style="padding:0px 0px!important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left" style="margin-top: 32px;">
+                    <div class="product-categori">
+                        <div class="search-product">
+                            <form action='@Url.Action("Search", "Home")' method="post">
+                                <input class="form-control" id="search_product" name="search_product" placeholder="Search here..." type="text">
+                                <button type="submit"> <i class="fa fa-search"></i> </button>
+                            </form>
+                        </div>
+                        <div class="filter-sidebar-left">
+                            <div class="title-left">
+                                <h3>Categories</h3>
+                            </div>
+                            <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" style="overflow: auto;height: 220px;" data-children=".sub-men">
+                                @{
+                                    Html.RenderAction("Category", "Home",new { id=@ViewBag.CatId});
+                                }
+                            </div>
+                        </div>
+                        <div class="filter-price-left">
+                            <div class="title-left">
+                                <h3>Price</h3>
+                            </div>
+                            <div class="price-box-slider">
+                                <div id="slider-range"></div>
+                                <p>
+                                    <input type="text" id="amount" readonly style="border:0; color: #2a6c29; font-weight:bold;">
+                                    <form action='@Url.Action("Shop", "Home")' method="post">
+                                        <input type="text" id="minimum" name="minimum" readonly style="display:none;" />
+                                        <input type="text" id="maximum" name="maximum" readonly style="display:none;" />
+                                        <button type="submit" class="btn btn-primary" style="color: #fff;background-color:#00b4d8;border-color:#00b4d8;">Apply Filter</button>
+                                    </form>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="filter-brand-left">
+                            <div class="title-left">
+                                <h3>Vendors</h3>
+                            </div>
+                            <div class="brand-box" style="overflow-y:auto;">
+                                @{
+                                    Html.RenderAction("MyVendors", "Home",new { id = ViewBag.VendorId});
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- side bar ends -->
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right" style="margin-top: 32px;">
+                    <div class="right-product-box">
+                        <div class="product-item-filter row">
+                            <div class="col-12 col-sm-8  text-center text-sm-left">
+                                <div class="toolbar-sorter-right">
+                                    <span>Sort by </span>
+                                    <select  id="basic" onchange="location = this.value;" class="selectpicker show-tick form-control arrow1">
+                                        <option value="/Home/Shop" data-display="Select">Show All</option>
+                                        @if (ViewBag.Filter == "/Home/Shop?filter=5")
+                                        {
+                                            <option value="/Home/Shop?filter=5" selected>High Price</option>
+                                            <option value="/Home/Shop?filter=6">Low Price</option>
+                                        }
+                                        else if (ViewBag.Filter == "/Home/Shop?filter=6")
+                                        {
+                                            <option value="/Home/Shop?filter=5">High Price</option>
+                                            <option value="/Home/Shop?filter=6" selected>Low Price</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="/Home/Shop?filter=5">High Price</option>
+                                            <option value="/Home/Shop?filter=6">Low Price</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row product-categorie-box">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane" id="grid-view">
+                                    <div class="row">
+                                        @if (Model.Count() > 0)
+                                        {
+                                            foreach (var item in Model.OrderByDescending(p => p.ItemLeft != 0))
+                                            {
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                @if (item.ItemLeft == 0)
+                                                                {
+                                                                    <p class="sold">Sold</p>
+                                                                }
+                                                                else if (item.CreatedAt.Date == DateTime.Today)
+                                                                {
+                                                                    <p class="new">New</p>
+                                                                }
+                                                                else if (item.SalePrice > 0)
+                                                                {
+                                                                    <p class="sale">Sale</p>
+                                                                }
+                                                            </div>
+                                                            <img src="@item.Thumbnail" style="width: 100%;height: 277px;" class="img-fluid" alt="Image">
+                                                            <div class="mask-icon">
+                                                                <a class="cart" href="/Home/OfferDetail?id=@item.Id ">View</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="why-text">
+                                                            <h4>@item.Name</h4>
+                                                            @if (item.SalePrice > 0)
+                                                            {
+                                                                <h5 style="color: #00b8d4;"><del>Rs.@item.UnitPrice</del> Rs.@item.SalePrice</h5>
+                                                            }
+                                                            else
+                                                            {
+                                                                <h5 style="color: #00b8d4;">Rs.@item.UnitPrice</h5>
+                                                            }
+                                                            @{
+                                                                Html.RenderAction("PartialRating", "Home", new { id = item.Id });
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <h2 style="top:53px;padding-left:46px;color:red;">There are no Offers to your search</h2>
+                                        }
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="list-view">
+                                    @if (Model.Count() > 0)
+                                    {
+                                        foreach (var item in Model.OrderByDescending(p=>p.ItemLeft != 0))
+                                        {
+                                            <div class="list-view-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="products-single fix" style="margin-bottom:0px;">
+                                                            <div class="box-img-hover">
+                                                                <div class="type-lb">
+                                                                    @if (item.ItemLeft == 0)
+                                                                    {
+                                                                        <p class="sold">Sold</p>
+                                                                    }
+                                                                    else if (item.CreatedAt.Date == DateTime.Today)
+                                                                    {
+                                                                        <p class="new">New</p>
+                                                                    }
+                                                                    else if (item.SalePrice > 0)
+                                                                    {
+                                                                        <p class="sale">Sale</p>
+                                                                    }
+                                                                </div>
+                                                                <img src="@item.Thumbnail" style="width: 100%;height: 277px;" class="img-fluid" alt="Image">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8" style="margin-bottom:20px;">
+                                                        <div class="why-text full-width">
+                                                            <h4>@item.Name</h4>
+                                                            @if (item.SalePrice > 0)
+                                                            {
+                                                                <h5 style="color: #00b8d4;"><del>Rs.@item.UnitPrice</del> Rs.@item.SalePrice</h5>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <h5 style="color: #00b8d4;">Rs.@item.UnitPrice</h5>
+                                                            }
+                                                            @{
+                                                                Html.RenderAction("PartialRating", "Home", new { id = item.Id });
+                                                            }
+                                                            <p>
+                                                                @item.Description
+                                                            </p>
+                                                            <a class="btn hvr-hover" href="/Home/OfferDetail?id=@item.Id ">View</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <h2 style="top:53px;padding-left:46px;color:red;">There are no Offers to your search</h2>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Shop Page -->
+</div>
+<script>
+    $('#tab_shop').addClass("active");
+</script>

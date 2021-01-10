@@ -1,0 +1,424 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.Package.VendorPackages
+@{
+    Layout = "~/Views/Shared/_Slider.cshtml";
+}
+<br />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            margin-bottom: 123px;
+        }
+
+        label {
+            font-weight: 500 !important;
+        }
+
+        input[type=checkbox] + label {
+            display: block;
+            margin: 0.2em;
+            cursor: pointer;
+            padding: 0.2em;
+            font-size: 13px;
+        }
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+            input[type=checkbox] + label:before {
+                content: "\2714";
+                border: 0.1em solid #2A3F54;
+                border-radius: 0.2em;
+                display: inline-block;
+                height: 1.5em;
+                padding-left: 0.2em;
+                padding-bottom: 0.3em;
+                margin-right: 0.2em;
+                vertical-align: bottom;
+                color: transparent;
+                transition: .2s;
+            }
+
+            input[type=checkbox] + label:active:before {
+                transform: scale(0);
+            }
+
+            input[type=checkbox]:checked + label:before {
+                background-color: MediumSeaGreen;
+                border-color: MediumSeaGreen;
+                color: #fff;
+            }
+
+            input[type=checkbox]:disabled + label:before {
+                transform: scale(1);
+                border-color: #aaa;
+            }
+
+            input[type=checkbox]:checked:disabled + label:before {
+                transform: scale(1);
+                background-color: #bfb;
+                border-color: #bfb;
+            }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 737px!important;">
+        <div class="row" style="margin:0 auto;justify-content:center;">
+            <h3 style="font-weight:700;font-size: 17px;border: 2px solid #a99a9a;padding-bottom: 0px;padding: 4px;border-radius: 8px;">
+                Service Contract
+            </h3>
+        </div>
+        <br>
+        <div class="row" style="margin: 0 auto;">
+            <div class="col-7">
+                <div class="row" style="margin:0 auto;">
+                    <h3 style="font-weight:700;font-size: 17px;">
+                        Customer Details
+                    </h3>
+                </div>
+                <div style="padding: 15px;border: 1px solid black;">
+                    <span style="margin-right:12px;font-size: 13px;">Name:</span><span style="font-size: 13px;">@Model.VendorProxy.UserName</span><br>
+                    <span style="margin-right:12px;font-size: 13px;">NTN:</span><hr style="margin: 0px;width: 126px;margin-left: 40px;border: 1px solid #787878;margin-bottom: -21px;margin-top: -8px;"><br>
+                    <span style="margin-right:12px;font-size: 13px;">Address:</span><span style="font-size: 13px;">@Model.VendorProxy.Address</span><br>
+                </div>
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-4">
+                <div style="padding: 3px 7px 3px 7px;border: 1px solid black;margin-bottom: 4px;margin-top: 27px;">
+                    <span style="margin-right:12px;">SC No:</span><span style="font-weight: 700;font-size: 15px;">@Model.Id</span><br>
+                </div>
+                <div style="padding: 7px;border: 1px solid black;margin-bottom: 4px;">
+                    <span style="margin-right:12px;font-size: 12px;">Start Date:</span><span style="font-size: 11px;">@Html.DisplayFor(model => model.AssignDate)</span><br>
+                </div>
+                <div style="padding: 7px;border: 1px solid black;margin-bottom: 4px;">
+                    <span style="margin-right:12px;font-size: 12px;">Package Name:</span><span style="text-transform:capitalize;font-size: 12px;">@Model.PackageProxy.Name</span><br>
+                </div>
+            </div>
+        </div>
+        <!--Type-->
+        <div class="row" style="margin:0 auto;margin-top: 19px;">
+            <div class="col-12">
+                <h3 style="font-weight:600;font-size: 17px;">
+                    Type
+                </h3>
+                <div class="row" style="padding: 7px;border: 1px solid #323030;margin:0 auto;">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Agency</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Marketing Agency</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Developer Agency</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Architects</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Contractor</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Engineer's</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Agents</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Private Client</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Legal Consultant</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Builders</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                            <label for="IsActive">Others</label>
+                            <input type="hidden" id="IsActive" value="false" name="IsActive">
+                            <hr style="margin: 0px;width: 110px;margin-left: 90px;border: 1px solid #787878;margin-bottom: -21px;margin-top: -8px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Description-->
+        <div class="row" style="margin:0 auto;margin-top:16px;">
+            <div class="col-12">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <th>Description</th>
+                            <th>Bank</th>
+                            <th>Cheque No:</th>
+                            <th>Date</th>
+                            <th>Amount(PKR)</th>
+                        </tr>
+                        <tr>
+                            <td style="width: 51%;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cash</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cheque</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Online</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cash</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cheque</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Online</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style=" width: 32%;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cash</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cheque</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Online</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style=" width: 31%;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cash</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Cheque</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="checkbox" id="IsActive" value="true" name="IsActive">
+                                        <label for="IsActive">Online</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding: 7px;border: 1px solid black;margin-bottom: 4px;">
+                    <span style="margin-right:12px;font-weight:700;font-size: 13px;">Total Amount in PKR:</span><span style="font-weight: 700;font-size: 13px;">@Model.TotalBill</span><br>
+                </div>
+            </div>
+        </div>
+        <!--Total Amonut-->
+        <div class="row" style="margin:0 auto;margin-bottom: 15px;">
+            <div class="col-12">
+                <h3 style="font-size: 13px;font-weight:700;">
+                    Total Amounts in Words
+                </h3>
+                <div style="padding: 7px;border: 1px solid black;">
+                    <span style="margin-right:12px;font-weight:700;font-size: 13px;">Rupees:</span><input type="text" name="inwords" id="inwords" style="border:none;background-color:#fff;text-transform:capitalize;width: 79%;font-size: 13px;" disabled=""><br>
+                </div>
+            </div>
+        </div>
+        <!--Total Amonut in Words-->
+        <div class="row" style="margin:0 auto;">
+            <div class="col-md-12">
+                <div style="padding: 7px;border: 1px solid black;text-align: center;">
+                    <span style="margin-right:12px;font-weight:700;font-size: 15px;">Signatures:</span><br>
+                </div>
+            </div>
+        </div>
+        <!--Signatures-->
+        <div class="row" style="margin:0 auto;">
+            <div class="col-md-12">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <textarea class="form-control" style="border:none;" rows="4"></textarea>
+                            </td>
+                            <td>
+                                <textarea class="form-control" style="border:none;" rows="4"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span style="margin-right:12px;font-size: 13px;">Accepted By:</span>  <span style="font-weight: 700;font-size: 14px;">@Model.VendorProxy.UserName</span>
+                            </td>
+                            <td style="font-size: 13px;">
+                                <span style="margin-right:12px;font-size: 13px;">Representative:</span>  <span style="font-weight: 700;font-size: 14px;">@Model.StaffProxy.UserName</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Package Description-->
+        <div class="row" style="margin: 0 auto;margin-top:15px;">
+            <div class="col-12">
+                <div style="padding: 20px;border: 1px solid black;font-size: 12px;">
+                    <span style="margin-right:12px;">Expiry Date:</span><span>@Html.DisplayFor(model => model.ExpireDate)</span><br>
+                    <span style="margin-right:12px;">Ads:</span>
+                    @if (@Model.PackageProxy.AdLimit == true)
+                    {
+                        <span style="margin-right: 82px;">@Model.PackageProxy.MaxAdLimit</span>
+                    }
+                    else
+                    {
+                        <span style="background:#25bbb0;color:white;text-align:center;padding:3px 8px 3px 8px;border-radius:15px;margin-right: 47px;">
+                            Unlimited
+                        </span>
+                    }
+                    <span style="margin-right:12px;">Offers:</span>
+                    @if (@Model.PackageProxy.IsLimited == true)
+                    {
+                        <span style="margin-right: 82px;">@Model.PackageProxy.MaxOfferLimit</span>
+                    }
+                    else
+                    {
+                        <span style="background:#25bbb0;color:white;text-align:center;padding:3px 8px 3px 8px;border-radius:15px;margin-right: 47px;">
+                            Unlimited
+                        </span>
+                    }
+                    <span style="margin-right:12px;">Awesome:</span><input type="text" style="border-top:none;border-left:none;border-right:none;height: 14px;width: 14%;"><br>
+                    <span style="margin-right:12px;">Super Awesome:</span><input type="text" style="border-top:none;border-left:none;border-right:none;height: 14px;width: 14%;">
+                    <span style="margin-right:12px;">Featured Contract:</span><input type="text" style="border-top:none;border-left:none;border-right:none;height: 14px;width: 14%;">
+                    <span style="margin-right:12px;">Featured Duration:</span><input type="text" style="border-top:none;border-left:none;border-right:none;height: 14px;width: 16%;">
+                </div>
+            </div>
+        </div>
+        <!--Banking Details-->
+        <div class="row" style="margin: 0 auto;margin-top: 15px;">
+            <div class="col-md-12">
+                <div class="row" style="margin:0 auto;">
+                    <h3 style="font-weight:700;font-size: 17px;">
+                        Bank Details
+                    </h3>
+                </div>
+                <div style="padding: 22px; border: 1px solid black;">
+                    <span style="margin-right:12px;font-size: 13px;">Account Name:</span><input type="text" style="border-top:none;border-left:none;border-right:none;    height: 14px;"><br>
+                    <span style="margin-right:12px;font-size: 13px;">Account Number:</span><input type="text" style="border-top:none;border-left:none;border-right:none;    height: 14px;"><br>
+                    <span style="margin-right:12px;font-size: 13px;">IBAN:</span><input type="text" style="border-top:none;border-left:none;border-right:none;    height: 14px;"><br>
+                    <span style="margin-right:12px;font-size: 13px;">Bank Name:</span><input type="text" style="border-top:none;border-left:none;border-right:none;    height: 14px;"><br>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="TotalBill1" id="TotalBill1" value="@Model.TotalBill">
+    </div>
+    <div class="row" style="margin:0 auto;justify-content:center;    margin-top: 68px;">
+        <p>This is computer generated invoice no signature required </p>
+    </div>
+</body>
+</html>
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script>
+    var a = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ', 'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+    var b = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+
+
+    $(document).ready(function () {
+        var num = parseInt(document.getElementById('TotalBill1').value);
+        if ((num = num.toString()).length > 9) return 'overflow';
+        n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+        if (!n) return; var str = '';
+        str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+        str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+        str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+        str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+        str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+        document.getElementById('inwords').value = str + "only";
+    });
+</script>
+

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.Cart>
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row" style="margin:0 auto;">
+            <h3 style="color:#00b4d8;font-weight:700;font-size: 31px;">Cart Details</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-8">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    Product Name
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th> Remove Cart</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.OfferObject.Thumbnail" style="width: 87px;height: 112px;" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OfferObject.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                    <td>
+                                        Rs. @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td class="remove-pr">
+                                        <a href="@Url.Action("RemoveCart","Carts",new {id=item.Id })">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @{
+                Html.RenderAction("OrderSummary", "Carts");
+            }
+        </div>
+    </div>
+</div>
+<!-- End Cart -->
+<script>
+    $('#tab_account').addClass("active");
+</script>

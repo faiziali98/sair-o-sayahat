@@ -1,0 +1,17 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.OfferSubCategory>
+
+@foreach (var item in Model)
+{
+    if (item.CategoriesList.Count() > 0)
+    {
+        <li class="dropdown">
+            <a href="/Home/Shop?filter=2&subCategoryId=@item.Id" ata-toggle="dropdown" class="nav-link dropdown-toggle arrow">@item.Name</a>
+            <ul class="dropdown-menu" style="top:0px!important;">
+                @foreach (var sub in item.CategoriesList.Where(p=>p.IsActive == true))
+                {
+                    <li class="dropdown"><a href="/Home/Shop?filter=1&categoryId=@sub.Id">@sub.Name</a></li>
+                }
+            </ul>
+        </li>
+    }
+}

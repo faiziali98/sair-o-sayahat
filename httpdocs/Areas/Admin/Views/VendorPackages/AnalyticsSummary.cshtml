@@ -1,0 +1,101 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Package.VendorPackages>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+<style>
+    .card-title {
+        text-transform: capitalize;
+    }
+</style>
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Analytics</li>
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Analytics Summary</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style=" background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                <h3 class="card-title">Analytics Summary</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered responsive nowrap dataTable dtr-inline collapsed" style="width:100%;" id="table_id">
+                    <thead>
+                        <tr>
+                            <th>
+                                Package Title
+                            </th>
+                            <th>
+                                Vendor
+                            </th>
+                            <th>
+                                Assign Date
+                            </th>
+                            <th>
+                                Assign By
+                            </th>
+                            <th>
+                                Total Bill
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackageProxy.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VendorProxy.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AssignDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffProxy.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalBill)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
+
+

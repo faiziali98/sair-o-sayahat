@@ -1,0 +1,479 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Package.VendorPackages>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+<style>
+    .card-title {
+        text-transform: capitalize;
+    }
+</style>
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        @if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.approved)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Vendor Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Assigned Packages</li>
+                        }
+                        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.activation_request)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Vendor Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Activation Requests</li>
+                        }
+                        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze_request)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Vendor Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Freeze Requests</li>
+                        }
+                        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Vendor Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Pending Requests</li>
+                        }
+                        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.deactivate_request)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Vendor Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Deactivation Requests</li>
+                        }
+                        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.expired)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Vendor Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Expired Vendor Packages</li>
+                        }
+                        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Frozen Packages</li>
+                        }
+                        else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.rejected)
+                        {
+                            <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-boxes"></i>Vendor Packages</li>
+                            <li style="font-size: 13px;" class="breadcrumb-item active">Rejected Requests</li>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style=" background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                @if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.approved)
+                {
+                    <h3 class="card-title">Assigned Packages</h3>
+                }
+                else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.activation_request)
+                {
+                    <h3 class="card-title">Activation Requests</h3>
+                }
+                else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze_request)
+                {
+                    <h3 class="card-title">Freeze Requests</h3>
+                }
+                else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                {
+                    <h3 class="card-title">Pending Requests</h3>
+                }
+                else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.deactivate_request)
+                {
+                    <h3 class="card-title">Deactivation Requests</h3>
+                }
+                else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.expired)
+                {
+                    <h3 class="card-title">Expired Vendor Packages</h3>
+                }
+                else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze)
+                {
+                    <h3 class="card-title">Frozen Packages</h3>
+                }
+                else if (ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.rejected)
+                {
+                    <h3 class="card-title">Rejected Requests</h3>
+                }
+            </div>
+            <div class="card-body">
+                <h3 style="font-size:18px;font-weight:700;color:red;">@ViewBag.Error</h3>
+                <table class="table  table-striped table-bordered responsive nowrap dataTable dtr-inline collapsed" style="width:100%;" id="table_id">
+                    <thead>
+                        <tr>
+                            <th>Sr#</th>
+                            <th>
+                                Package Title
+                            </th>
+                            <th>
+                                Vendor
+                            </th>
+                            @if (@ViewBag.Status != SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                            {
+                                <th>
+                                    Assign Date
+                                </th>
+                                <th>
+                                    Expiry Date
+                                </th>
+                                <th>
+                                    Assign By
+                                </th>
+                            }
+                            else
+                            {
+
+                            }
+                            <th>
+                                Total Bill
+                            </th>
+                            <th>
+                                Payment Status
+                            </th>
+                            @if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.deactivate_request)
+                            {
+                                <script type="text/javascript">
+                                    $("#vendor-package-menu").addClass("menu-open");
+                                </script>
+                                <th scope="col">
+                                    Approve
+                                </th>
+                            }
+                            else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                            {
+                                <script type="text/javascript">
+                                    $("#vendor-package-menu").addClass("menu-open");
+                                </script>
+                                <th scope="col">
+                                    Action
+                                </th>
+                            }
+                            else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze)
+                            {
+                                <script type="text/javascript">
+                                    $("#package-menu").addClass("menu-open");
+                                </script>
+                                <th scope="col">
+                                    Unfreeze
+                                </th>
+                            }
+                            else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze_request)
+                            {
+                                <script type="text/javascript">
+                                    $("#vendor-package-menu").addClass("menu-open");
+                                </script>
+                                <th scope="col">
+                                    Freeze
+                                </th>
+                            }
+                            else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.activation_request)
+                            {
+                                <script type="text/javascript">
+                                    $("#vendor-package-menu").addClass("menu-open");
+                                </script>
+                                <th scope="col">
+                                    Activate
+                                </th>
+                            }
+                            else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.approved)
+                            {
+                                <script type="text/javascript">
+                                    $("#vendor-package-menu").addClass("menu-open");
+                                </script>
+                                <th scope="col">
+                                    View Invoice
+                                </th>
+                            }
+                            else
+                            {
+                                <script type="text/javascript">
+                                    $("#vendor-package-menu").addClass("menu-open");
+                                </script>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackageProxy.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VendorProxy.UserName)
+                                </td>
+                                @if (item.Status != SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                                {
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AssignDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ExpireDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StaffProxy.UserName)
+                                    </td>
+                                }
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalBill)
+                                </td>
+                                <td>
+                                    @if (item.IsPaid)
+                                    {
+                                        <span style="background:#25bbb0;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px; ">
+                                            Paid
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span style="background:#007bff;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px; ">
+                                            Not Paid
+                                        </span>
+                                    }
+                                </td>
+
+                                @if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.deactivate_request)
+                                {
+                                    <td>
+                                        <a class="btn btn-xs btn-outline-success" type="button" data-toggle="modal" data-target="#@item.Id-3" href="#">
+                                            <i class="fas fa-check-circle"></i>
+                                        </a>
+                                    </td>
+                                }
+                                else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                                {
+                                    <td>
+                                        <a class="btn btn-xs btn-outline-success hoverText" type="button" data-toggle="modal" data-target="#@item.Id-1" href="#">
+                                            <span class="hoverTextText">Approve Request</span><i class="fas fa-check-circle"></i>
+                                        </a>
+                                        <a class="btn btn-xs btn-outline-danger hoverText" type="button" data-toggle="modal" data-target="#@item.Id-2" href="#">
+                                            <span class="hoverTextText">Reject Request</span><i class="fas fa-times-circle"></i>
+                                        </a>
+                                    </td>
+                                }
+                                else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze)
+                                {
+                                    <td>
+                                        <a class="btn btn-xs btn-outline-success hoverText" type="button" data-toggle="modal" data-target="#@item.Id-4" href="#">
+                                            <span class="hoverTextText">Unfreeze Package</span><i class="fas fa-check-circle"></i>
+                                        </a>
+                                    </td>
+                                }
+                                else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.freeze_request)
+                                {
+                                    <td>
+                                        <a class="btn btn-xs btn-outline-success hoverText" type="button" data-toggle="modal" data-target="#@item.Id-5" href="#">
+                                            <span class="hoverTextText">Freeze Package</span><i class="fas fa-check-circle"></i>
+                                        </a>
+                                    </td>
+                                }
+                                else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.activation_request)
+                                {
+                                    <td>
+                                        <a class="btn btn-xs btn-outline-success hoverText" type="button" data-toggle="modal" data-target="#@item.Id-6" href="#">
+                                            <span class="hoverTextText">Activate Package</span><i class="fas fa-check-circle"></i>
+                                        </a>
+                                    </td>
+                                }
+                                else if (@ViewBag.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.approved)
+                                {
+                                    <td>
+                                        <a class="btn btn-outline-info" href="@Url.Action("Invoice","VendorPackages",new { id=item.Id})">View Invoice</a>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @foreach (var item in Model)
+                {
+                    <!-- The Modal -->
+                    <div class="modal fade" id="@item.Id-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Approve Request</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to approve this request.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <a type="button" href="@Url.Action("ApprovePayment", "VendorPackages", new { id = item.Id })" class="btn btn-success">Approve</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="@item.Id-2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Reject Payment</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to Reject this payment.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <a type="button" href="@Url.Action("RejectPayment", "VendorPackages", new { id = item.Id })" class="btn btn-success">Reject</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="@item.Id-3">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Approve Request</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to Approve this Request.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <a type="button" href="@Url.Action("RejectPayment", "VendorPackages", new { id = item.Id })" class="btn btn-success">Approve</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="@item.Id-4">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">UnFreeze Package</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to UnFreeze this Vendor Package.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <a type="button" href="@Url.Action("UnFreezePackage", "VendorPackages", new { id = item.Id })" class="btn btn-success">Unfreeze</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="@item.Id-5">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Freeze Package</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to Freeze this Vendor Package.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <a type="button" href="@Url.Action("FreezePackage", "VendorPackages", new { id = item.Id })" class="btn btn-success">Freeze</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="@item.Id-6">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Activate Package</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to activate this Vendor Package.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <a type="button" href="@Url.Action("ActivatePackage", "VendorPackages", new { id = item.Id })" class="btn btn-success">Activate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            "ordering": false
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ("@ViewBag.CreateInvoice" == "success")
+        {
+            swal("", "Invoice Generated Successfully", "success");
+        }
+        if ("@ViewBag.ApprovePayment" == "success")
+        {
+            swal("", "Request Approved Successfully", "success");
+        }
+        if ("@ViewBag.RejectPayment" == "success")
+        {
+            swal("", "Request Reject Successfully", "success");
+        }
+        if ("@ViewBag.UnfreezePackage" == "success")
+        {
+            swal("", "Package Unfreezed Successfully", "success");
+        }
+        if ("@ViewBag.activatePackage" == "success")
+        {
+            swal("", "Package Activated Successfully", "success");
+        }
+         if ("@ViewBag.freezePackage" == "success")
+        {
+             swal("", "Package Freezed Successfully", "success");
+        }
+    });
+</script>

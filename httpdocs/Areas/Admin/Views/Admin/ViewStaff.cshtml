@@ -1,0 +1,335 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.ApplicationUser>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+<style>
+    .modal-title {
+        color: #00b4d8;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-user-shield"></i>Employees</li>
+                        @if (ViewBag.Active != false)
+                        {
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Active Employees</li>
+                        }
+                        else
+                        {
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Blocked Employees</li>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style="background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                @if (ViewBag.Active != false)
+                {
+                    <h3 class="card-title">Active Employees:</h3>
+                }
+                else
+                {
+                    <h3 class="card-title">Blocked Employees:</h3>
+                }
+            </div>
+            <div class="card-body ">
+                <table class="table  table-striped table-bordered responsive nowrap dataTable dtr-inline collapsed" style="width:100%;" id="table_id">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Profile Picture</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col">Updated at</th>
+                            <th scope="col">Roles</th>
+                            @if (ViewBag.Active != false)
+                            {
+                                <th scope="col">Block Staff</th>
+                            }
+                            else
+                            {
+                                <th scope="col">Reactivate Staff</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var count = 0;
+                        }
+                        @foreach (var item in Model.OrderBy(m => m.CreatedAt))
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.UserName</td>
+                                <td>@item.DisplayName</td>
+
+                                <td>@item.PhoneNumber</td>
+                                <td><img src="@item.ImageUrl" style="width:80px;height:80px" /></td>
+                                <td>@item.Email</td>
+                                @if (item.IsActive == true)
+                                {
+                                    <td>
+                                        <span style="background:#25bbb0;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px; ">
+                                            Active
+                                        </span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <span style="background:#ff5f5f;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px; ">
+                                            Blocked
+                                        </span>
+                                    </td>
+                                }
+                                <td>
+                                    <a data-toggle="modal" style="" data-target="#@item.Id-3" class="btn btn-outline-info">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                                <td>@item.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss tt")</td>
+                                @if (item.UpdatedAt.HasValue)
+                                {
+                                    <td>@item.UpdatedAt.Value.ToString("dd/MM/yyyy hh:mm:ss tt")</td>
+                                }
+                                else
+                                {
+                                    <td>@item.UpdatedAt</td>
+                                }
+
+                                <td>
+                                    <a data-toggle="modal" style="" data-target="#@item.Id-4" class="btn btn-outline-info">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    
+                                </td>
+                                @if (item.IsActive == true)
+                                {
+                                    <td>
+                                        <a data-toggle="modal" data-target="#@item.Id-1" class="btn btn-xs btn-outline-danger">
+                                            <i class="fas fa-user-slash" style=""></i>
+                                        </a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a data-toggle="modal" data-target="#@item.Id-2" class="btn btn-xs btn-default">
+                                            <i class="fas fa-user-check"></i>
+                                        </a>
+                                    </td>
+                                }
+                            </tr>
+                            <!-- The Modal -->
+                            <div class="modal fade" id="@item.Id-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Block Staff</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p>
+                                                Are you sure you want to block staff?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" href="@Url.Action("ExpireStaff","Admin",new { id=item.Id})" class="btn btn-primary">Block</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- The Modal -->
+                            <div class="modal fade" id="@item.Id-2">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Reactivate Staff</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p>
+                                                Are you sure you want to reactivate staff?
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <a type="button" href="@Url.Action("ReactivateStaff","Admin",new { id=item.Id})" class="btn btn-primary">Reactivate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- The Modal -->
+                            <div class="modal fade" id="@item.Id-3">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Address</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p>
+                                                <span style="font-weight:500;">Address:</span> @item.Address
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- The Modal -->
+                            <div class="modal fade" id="@item.Id-4">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Roles</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p>
+                                                <div class="row">
+                                                    @if (item.AdManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Ad Management
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                    @if (item.OfferManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Offer Management
+                                                            </span>
+
+                                                        </div>
+                                                    }
+                                                    @if (item.VendorManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Vendor Management
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                    @if (item.PackageManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Package Management
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                    @if (item.StaffManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Staff Management
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                    @if (item.BlogsManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Blogs Management
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                    @if (item.CustomerManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Customer Management
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                    @if (item.CategoryManagement == true)
+                                                    {
+                                                        <div class="col-6" style="margin-bottom: 17px;">
+                                                            <span style="background:#00de84;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px;margin-right:14px; ">
+                                                                Category Management
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                </div> 
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script>
+    $("#staff-menu").addClass("menu-open");
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ("@ViewBag.CreateStaff" == "success")
+        {
+            swal("", "Staff created successfully", "success");
+        }
+        else if ("@ViewBag.ExpireStaff" == "success")
+        {
+            swal("", "Staff blocked successfully", "success");
+        }
+        else if ("@ViewBag.reActivateStaff" == "success")
+        {
+            swal("", "Staff reactivated successfully", "success");
+        }
+    });
+</script>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Offer.OfferSubCategory>
+    @foreach (var item in Model)
+    {
+        <div class="list-group-collapse sub-men">
+            @if (item.CategoriesList.Count() > 0)
+            {
+                foreach (var sub1 in item.CategoriesList)
+                {
+                    if(ViewBag.CatId == sub1.Id)
+                    {
+                        ViewBag.SubId = item.Id;
+                    }
+                }
+                if(ViewBag.SubId == item.Id)
+                {
+                    <a class="list-group-item list-group-item-action" href="" data-target="#@item.Id" data-toggle="collapse" aria-expanded="true" aria-controls=" sub-men1">
+                        @item.Name
+                    </a>
+                    <div class="collapse show" id="@item.Id" data-parent="#list-group-men">
+                        <div class="list-group">
+                            @foreach (var sub in item.CategoriesList.Where(p=>p.IsActive == true))
+                            {
+                                if (ViewBag.CatId == sub.Id)
+                                {
+                                    <a href="/Home/Shop?categoryId=@sub.Id&&filter=1" class="list-group-item list-group-item-action active">@sub.Name</a>
+                                }
+                                else
+                                {
+                                    <a href="/Home/Shop?categoryId=@sub.Id&&filter=1" class="list-group-item list-group-item-action">@sub.Name</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+                else if(ViewBag.SubId != item.Id)
+                {
+                    <a class="list-group-item list-group-item-action collapsed" href="" data-target="#@item.Id" data-toggle="collapse" aria-expanded="false" aria-controls=" sub-men1">
+                    @item.Name
+                </a>
+                <div class="collapse" id="@item.Id" data-parent="#list-group-men">
+                    <div class="list-group">
+                        @foreach (var sub in item.CategoriesList.Where(p => p.IsActive == true))
+                        {
+                            <a href="/Home/Shop?categoryId=@sub.Id&&filter=1" class="list-group-item list-group-item-action">@sub.Name</a>
+                        }
+                    </div>
+                </div>
+                }
+             }
+        </div>
+    }
+
+
+        

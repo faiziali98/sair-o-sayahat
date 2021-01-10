@@ -1,0 +1,221 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Package.VendorPackages>
+
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+
+<br />
+<style>
+    .filter-invoice {
+        background-color: black;
+        border-color: black;
+    }
+
+    .table {
+        text-transform: capitalize;
+    }
+</style>
+<br />
+@if (ViewBag.Title == "approved")
+{
+    <div class="row" style="margin:0 auto;justify-content:center;">
+        <a href="/PackageInvoice/Index?status=1" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-secondary">Approved</a>
+        <a href="/PackageInvoice/Index?status=0" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Pending</a>
+        <a href="/PackageInvoice/Index?status=3" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Rejected</a>
+        <a href="/PackageInvoice/Index?status=2" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Expired</a>
+        <a href="/PackageInvoice/Index?status=4" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Deactivation Request</a>
+        <a href="/PackageInvoice/Invoice"><i style="font-size:34px;margin-bottom:12px;color: #00b4d8;" class="fas fa-file"></i></a>
+    </div>
+}
+else if (ViewBag.Title == "pending")
+{
+    <div class="row" style="margin:0 auto;justify-content:center;">
+        <a href="/PackageInvoice/Index?status=1" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Approved</a>
+        <a href="/PackageInvoice/Index?status=0" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-secondary">Pending</a>
+        <a href="/PackageInvoice/Index?status=3" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Rejected</a>
+        <a href="/PackageInvoice/Index?status=2" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Expired</a>
+        <a href="/PackageInvoice/Index?status=4" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Deactivation Request</a>
+        <a href="/PackageInvoice/Invoice"><i style="font-size:34px;margin-bottom:12px;color: #00b4d8;" class="fas fa-file"></i></a>
+    </div>
+}
+else if (ViewBag.Title == "rejected")
+{
+    <div class="row" style="margin:0 auto;justify-content:center;">
+        <a href="/PackageInvoice/Index?status=1" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Approved</a>
+        <a href="/PackageInvoice/Index?status=0" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Pending</a>
+        <a href="/PackageInvoice/Index?status=3" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-secondary">Rejected</a>
+        <a href="/PackageInvoice/Index?status=2" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Expired</a>
+        <a href="/PackageInvoice/Index?status=4" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Deactivation Request</a>
+        <a href="/PackageInvoice/Invoice"><i style="font-size:34px;color: #00b4d8;" class="fas fa-file"></i></a>
+    </div>
+}
+else if (ViewBag.Title == "expired")
+{
+    <div class="row" style="margin:0 auto;justify-content:center;">
+        <a href="/PackageInvoice/Index?status=1" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Approved</a>
+        <a href="/PackageInvoice/Index?status=0" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Pending</a>
+        <a href="/PackageInvoice/Index?status=3" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Rejected</a>
+        <a href="/PackageInvoice/Index?status=2" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-secondary">Expired</a>
+        <a href="/PackageInvoice/Index?status=4" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Deactivation Request</a>
+        <a href="/PackageInvoice/Invoice"><i style="font-size:34px;margin-bottom:12px;color: #00b4d8;" class="fas fa-file"></i></a>
+    </div>
+}
+else
+{
+    <div class="row" style="margin:0 auto;justify-content:center;">
+        <a href="/PackageInvoice/Index?status=1" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Approved</a>
+        <a href="/PackageInvoice/Index?status=0" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Pending</a>
+        <a href="/PackageInvoice/Index?status=3" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Rejected</a>
+        <a href="/PackageInvoice/Index?status=2" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-primary">Expired</a>
+        <a href="/PackageInvoice/Index?status=4" style="margin-right:8px;margin-bottom:12px;" type="button" class="btn btn-secondary">Deactivation Request</a>
+        <a href="/PackageInvoice/Invoice"><i style="font-size:34px;margin-bottom:12px;color: #00b4d8;" class="fas fa-file"></i></a>
+    </div>
+}
+
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row" style="margin:0 auto;">
+            <h3 style="color:#00b4d8;font-weight:700;font-size: 31px;">Package Requests</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Package Name
+                                </th>
+                                @if (ViewBag.Title == "approved")
+                                {
+                                    <th>
+                                        Assigned Date
+                                    </th>
+                                    <th>
+                                        Expiry Date
+                                    </th>
+                                    <th>
+                                        Assigned By
+                                    </th>
+                                }
+                                else if (ViewBag.Title == "expired")
+                                {
+                                    <th>
+                                        Assigned Date
+                                    </th>
+                                    <th>
+                                        Expiry Date
+                                    </th>
+                                }
+                                <th>
+                                    Total Bill
+                                </th>
+                                <th>
+                                    Payment
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Count() > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PackageProxy.Name)
+                                        </td>
+                                        @if (ViewBag.Title == "approved")
+                                        {
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.AssignDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ExpireDate)
+                                            </td>
+                                            <td>
+                                                @item.StaffProxy.UserName
+                                            </td>
+                                        }
+                                        else if (ViewBag.Title == "expired")
+                                        {
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.AssignDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ExpireDate)
+                                            </td>
+                                        }
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalBill)
+                                        </td>
+                                        <td>
+                                            @if (item.IsPaid == true)
+                                            {
+                                                <span style="background:#25bbb0;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                    Paid
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span style="background:#007bff;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                    Not Paid
+                                                </span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.approved)
+                                            {
+                                                <span style="background:#01881a;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                    Approved
+                                                </span>
+                                            }
+                                            else if (item.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.pending)
+                                            {
+                                                <span style="background:#00b8d4;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                    Pending
+                                                </span>
+                                            }
+                                            else if (item.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.rejected)
+                                            {
+                                                <span style="background:#ed1245;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                    Rejected
+                                                </span>
+                                            }
+                                            else if (item.Status == SAIR_O_SIYAHAT_2.Models.Package.VendorPackages.InvoiceStatus.expired)
+                                            {
+                                                <span style="background:#b94cd4;color:white;text-align:center;padding:6px 8px 6px 8px;border-radius:15px; ">
+                                                    Expired
+                                                </span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                            else
+                            {
+                                <tr>
+                                    <td colspan="9">
+                                        <h2>No Matching Results</h2>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#tab_account').addClass("active");
+</script>
+
+
+
+
+
+

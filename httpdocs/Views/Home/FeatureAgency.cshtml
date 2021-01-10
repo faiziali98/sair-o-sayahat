@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.ApplicationUser>
+<div class="featured-agencies-box">
+    <div class="main-instagram owl-carousel owl-theme">
+
+        @foreach (var item in from i in Model.Select((value, index) => new { value, index }) group i.value by i.index / 3 into g select g)
+        {
+
+        <div class="item">
+            <div class="ins-inner-box">
+                @foreach (var vendor in item)
+                {
+                <img style="width:68%;height:50px;padding:0.1px;" src="@vendor.ImageUrl" />
+                }
+            </div> <!-- End row -->
+        </div><!-- End container -->
+        }
+        
+    </div>
+</div>
+<!-- End Featured Agencies Feed  -->

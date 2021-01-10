@@ -1,0 +1,30 @@
+﻿@model SAIR_O_SIYAHAT_2.Models.ApplicationUser
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <h3 style="font-size:32px;color:#00b4d8;font-weight:700;">My Profile:</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 style="font-size:22px;color:#00b4d8;font-weight:700;">
+                Name:
+            </h2>
+            <p>@Html.DisplayFor(model => model.DisplayName)</p>
+            <h2 style="font-size:22px;color:#00b4d8;font-weight:700;">
+                Email:
+            </h2>
+            <p>@Html.DisplayFor(model => model.Email)</p>
+            <h2 style="font-size:22px;color:#00b4d8;font-weight:700;">
+                Phone Number:
+            </h2>
+            <p>@Html.DisplayFor(model => model.PhoneNumber)</p>
+        </div>
+        <div class="col-md-6">
+            <a href="@Url.Action("ChangePassword","Manage")" class="link" style="font-size:18px;font-weight:600;color:#00b4d8;">Change Password</a>
+        </div>
+    </div>
+
+</div>
+

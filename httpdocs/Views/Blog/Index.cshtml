@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Admin.Blog>
+@{
+    Layout = "~/Views/Shared/_Layout_website.cshtml";
+}
+
+<style>
+    .categories_post {
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 21px;
+    }
+
+        .categories_post img {
+            max-width: 100%;
+        }
+
+        .categories_post .categories_details {
+            position: absolute;
+            top: 42px;
+            left: 53px;
+            right: 53px;
+            bottom: 42px;
+            background: rgba(34, 34, 34, 0.8);
+            color: #fff;
+            transition: all 0.3s linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .categories_post .categories_details h5 {
+                margin-bottom: 0px;
+                font-size: 18px;
+                line-height: 26px;
+                text-transform: uppercase;
+                color: #fff;
+                position: relative;
+            }
+
+            .categories_post .categories_details p {
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 26px;
+                margin-bottom: 0px;
+            }
+
+            .categories_post .categories_details .border_line {
+                margin: 10px 0px;
+                background: #fff;
+                width: 100%;
+                height: 1px;
+            }
+
+        .categories_post:hover .categories_details {
+            background: rgb(0, 184, 212);
+        }
+</style>
+<!--================Blog Categorie Area =================-->
+<br /><br /><br />
+<section class="blog_categorie_area">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.OrderBy(m => m.CreatedAt).Where(m=>m.IsActive ==true))
+            {
+                <div class="col-lg-4">
+                    <div class="categories_post">
+                        <img src="@item.Thumbnail" style="width:100%;height:197px;" />
+                        <a href="/Blog/Detail?id=@item.Id">
+                            <div class="categories_details">
+                                <div class="categories_text">
+                                    <h5 style="word-break: break-all;">@item.Title</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--================Blog Categorie Area =================-->
+<script>
+    $('#tab_blog').addClass("active");
+</script>

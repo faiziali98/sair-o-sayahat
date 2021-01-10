@@ -1,0 +1,314 @@
+﻿
+@model SAIR_O_SIYAHAT_2.Models.Package.Packages
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+<style>
+    .form-style {
+        text-transform: capitalize;
+    }
+    label {
+        font-weight: 500 !important;
+    }
+
+    input[type=checkbox] + label {
+        display: block;
+        margin: 0.2em;
+        cursor: pointer;
+        padding: 0.2em;
+    }
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+        input[type=checkbox] + label:before {
+            content: "\2714";
+            border: 0.1em solid #2A3F54;
+            border-radius: 0.2em;
+            display: inline-block;
+            height: 1.5em;
+            padding-left: 0.2em;
+            padding-bottom: 0.3em;
+            margin-right: 0.2em;
+            vertical-align: bottom;
+            color: transparent;
+            transition: .2s;
+        }
+
+        input[type=checkbox] + label:active:before {
+            transform: scale(0);
+        }
+
+        input[type=checkbox]:checked + label:before {
+            background-color: MediumSeaGreen;
+            border-color: MediumSeaGreen;
+            color: #fff;
+        }
+
+        input[type=checkbox]:disabled + label:before {
+            transform: scale(1);
+            border-color: #aaa;
+        }
+
+        input[type=checkbox]:checked:disabled + label:before {
+            transform: scale(1);
+            background-color: #bfb;
+            border-color: #bfb;
+        }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-box"></i>Packages</li>
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Create Package</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style="background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                <h3 class="card-title">Create Package</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" action="@Url.Action("Create","Packages")" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">Package Name*</label>
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control form-style",@required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">Package Price*</label>
+                                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @type = "number",@min="0", @max = "99000000", @required = "required" } })
+                                    <p id="words"></p>
+                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="font-weight: 500;" for="inputName">Package Validity(In Days)*</label>
+                                    @Html.EditorFor(model => model.Days, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Days, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="row" style="">
+                                        <div class="col-md-6">
+
+                                            <input type="checkbox" id="AdLimit" value="true" name="AdLimit" onclick="enable1()">
+                                            <label for="AdLimit">Ads Limit</label>
+                                            <input type="hidden" id="AdLimit" value="false" name="AdLimit">
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.MaxAdLimit, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+                                            @Html.ValidationMessageFor(model => model.MaxAdLimit, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="row" style="">
+                                        <div class="col-md-6">
+                                            <input type="checkbox" id="IsLimited" value="true" name="IsLimited" onclick="enable()">
+                                            <label for="IsLimited">Offer Limit</label>
+                                            <input type="hidden" id="IsLimited" value="false" name="IsLimited">
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.MaxOfferLimit, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0" } })
+                                            @Html.ValidationMessageFor(model => model.MaxOfferLimit, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="checkbox" id="ShowToAll" value="true" name="ShowToAll">
+                                    <label for="ShowToAll">Show To All Vendors</label>
+                                    <input type="hidden" id="ShowToAll" value="false" name="ShowToAll">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <a href="@Url.Action("Index",new { status=true})" class="btn btn-outline-danger">Cancel</a>
+                            <input type="button" data-toggle="modal" data-target="#myModal" value="Submit" class="btn btn-success" />
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Create a new Package</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Are you sure you want to create this Package.
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Submit" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery-->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script>
+    $("#package-menu").addClass("menu-open");
+    var loadFile = function (event) {
+        var fileName = event.target.files[0].name;
+        $('#imageName').html(fileName);
+    };
+</script>
+
+<script>
+    var offerLimit = $('#MaxOfferLimit');
+    if (offerLimit.val() != "0" && offerLimit.val() != "") {
+        $('#IsLimited').attr("checked", "checked");
+    }
+
+    var adLimit = $('#MaxAdLimit');
+    if (adLimit.val() != "0" && adLimit.val() != "") {
+        $('#AdLimit').attr("checked", "checked");
+    }
+
+    if ($('#IsLimited').is(':checked'))
+    {
+        $('#MaxOfferLimit').css('display', 'block');
+    }
+    else
+    {
+        $('#MaxOfferLimit').css('display', 'none');
+        $('#MaxOfferLimit').val("0");
+    }
+    if ($('#AdLimit').is(':checked'))
+    {
+        $('#MaxAdLimit').css('display', 'block');
+    }
+    else
+    {
+        $('#MaxAdLimit').css('display', 'none');
+        $('#MaxAdLimit').val("0");
+    }
+    function enable() {
+        if ($('#IsLimited').is(':checked')) {
+            $('#MaxOfferLimit').css('display', 'block');
+        }
+        else {
+            $('#MaxOfferLimit').css('display', 'none');
+            $('#MaxOfferLimit').val("0");
+        }
+    }
+    function enable1() {
+        if ($('#AdLimit').is(':checked')) {
+            $('#MaxAdLimit').css('display', 'block');
+        }
+        else {
+            $('#MaxAdLimit').css('display', 'none');
+            $('#MaxAdLimit').val("0");
+        }
+    }
+</script>
+<script>
+    var a = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ', 'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+    var b = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+    function inWords(num) {
+        if ((num = num.toString()).length > 9) return '';
+        n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+        if (!n) return; var str = '';
+        str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+        str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+        str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+        str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+        str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'only ' : '';
+        return str;
+    }
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    document.getElementById('Price').onkeyup = function () {
+        document.getElementById('words').innerHTML = inWords(document.getElementById('Price').value);
+    };
+
+    $(document).ready(function () {
+        $("#Price").keypress(function (e) {
+            var keyCode = e.which;
+            if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
+                return false;
+            }
+        });
+        $("#Days").keypress(function (e) {
+            var keyCode = e.which;
+            if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
+                return false;
+            }
+        });
+        $("#MaxOfferLimit").keypress(function (e) {
+            var keyCode = e.which;
+            if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
+                return false;
+            }
+        });
+        $("#MaxAdLimit").keypress(function (e) {
+            var keyCode = e.which;
+            if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
+                return false;
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,285 @@
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 00:04:36
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 00:04:35 182.50.151.89 GET /img/User/1_1x203923035.png - 443 - 109.245.36.205 HTTP/1.1 Mozilla/5.0+(Linux;+Android+10;+MAR-LX1A)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.101+Mobile+Safari/537.36 https://www.google.com/ sairosiyahat.com 200 0 0 9573 507 359
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 00:48:19
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 00:48:19 182.50.151.89 GET /robots.txt - 443 - 66.249.68.84 HTTP/1.1 Mozilla/5.0+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) - sairosiyahat.com 404 0 2 1477 230 546
+2021-01-09 00:48:20 182.50.151.89 GET /Home/Shop filter=1&categoryId=2 443 - 66.249.68.86 HTTP/1.1 Mozilla/5.0+(Linux;+Android+6.0.1;+Nexus+5X+Build/MMB29P)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.90+Mobile+Safari/537.36+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) - sairosiyahat.com 200 0 0 9957 571 765
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 01:29:31
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 01:29:30 182.50.151.89 GET / - 443 - 114.119.147.204 HTTP/1.1 Mozilla/5.0+(Linux;+Android+7.0;)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Mobile+Safari/537.36+(compatible;+PetalBot;+https://aspiegel.com/petalbot) - sairosiyahat.com 200 0 0 12357 356 295
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 02:10:01
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 02:10:00 182.50.151.89 GET /robots.txt - 443 - 185.191.171.7 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 363
+2021-01-09 02:10:03 182.50.151.89 GET /Blog/Detail id=5 443 - 185.191.171.22 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 6133 306 375
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 02:31:00
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 02:30:59 182.50.151.89 GET /.env - 80 - 13.68.244.143 HTTP/1.1 python-requests/2.24.0 - sairosiyahat.com 301 0 0 405 151 359
+2021-01-09 02:31:03 182.50.151.89 GET /.env - 443 - 13.68.244.143 HTTP/1.1 python-requests/2.24.0 - sairosiyahat.com 404 0 2 1477 151 226
+2021-01-09 02:31:15 182.50.151.89 POST / - 80 - 13.68.244.143 HTTP/1.1 python-requests/2.24.0 - sairosiyahat.com 301 0 0 397 232 359
+2021-01-09 02:31:20 182.50.151.89 GET / - 443 - 13.68.244.143 HTTP/1.1 python-requests/2.24.0 - sairosiyahat.com 200 0 0 12341 147 718
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 03:41:28
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 03:41:27 182.50.151.89 GET / - 80 - 34.75.236.223 HTTP/1.1 Mozilla/5.0+(X11;+U;+Linux+i686;+en-US;+rv:1.4)+Gecko/20030624 - sairosiyahat.com 301 0 0 416 271 328
+2021-01-09 03:41:29 182.50.151.89 GET / - 443 - 34.75.236.223 HTTP/1.1 Mozilla/5.0+(X11;+U;+Linux+i686;+en-US;+rv:1.4)+Gecko/20030624 - sairosiyahat.com 200 0 0 12357 271 406
+2021-01-09 03:41:29 182.50.151.89 GET / - 80 - 34.75.236.223 HTTP/1.1 Mozilla/5.0+(X11;+U;+Linux+i686;+en-US;+rv:1.4)+Gecko/20030624 - sairosiyahat.com 301 0 0 416 271 234
+2021-01-09 03:41:31 182.50.151.89 GET / - 443 - 34.75.236.223 HTTP/1.1 Mozilla/5.0+(X11;+U;+Linux+i686;+en-US;+rv:1.4)+Gecko/20030624 - sairosiyahat.com 200 0 0 12357 271 312
+2021-01-09 03:41:32 182.50.151.89 GET / - 443 - 34.75.236.223 HTTP/1.1 Mozilla/5.0+(X11;+U;+Linux+i686;+en-US;+rv:1.4)+Gecko/20030624 - sairosiyahat.com 200 0 0 12357 271 281
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 04:52:47
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 04:52:46 182.50.151.89 GET /wordpress/wp-admin/ - 80 - 62.151.176.182 HTTP/1.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/78.0.3904.97+Safari/537.36 http://sairosiyahat.com/ sairosiyahat.com 301 0 0 435 237 328
+2021-01-09 04:52:47 182.50.151.89 GET /wordpress/wp-admin/ - 443 - 62.151.176.182 HTTP/1.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/78.0.3904.97+Safari/537.36 http://sairosiyahat.com/ sairosiyahat.com 404 0 0 3845 237 265
+2021-01-09 05:01:30 182.50.151.89 GET /robots.txt - 443 - 114.119.150.110 HTTP/1.1 (compatible;PetalBot;+https://aspiegel.com/petalbot) - sairosiyahat.com 404 0 2 1509 271 15
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 05:36:43
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 05:36:43 182.50.151.89 GET / - 443 - 207.46.13.229 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 200 0 0 12341 239 421
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 05:55:36
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 05:55:35 182.50.151.89 GET / - 443 - 54.36.149.56 HTTP/1.1 Mozilla/5.0+(compatible;+AhrefsBot/7.0;++http://ahrefs.com/robot/) - sairosiyahat.com 200 0 0 12341 171 312
+2021-01-09 06:08:04 182.50.151.89 GET /Content/responsive.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1797 392 203
+2021-01-09 06:08:04 182.50.151.89 GET /plugins/toastr/toastr.min.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 4085 399 218
+2021-01-09 06:08:04 182.50.151.89 GET /Content/bootstrap.min.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 39615 395 258
+2021-01-09 06:08:04 182.50.151.89 GET /plugins/bootstrap-select-1.13.12/css/bootstrap-select.min.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 3077 431 218
+2021-01-09 06:08:04 182.50.151.89 GET /Content/style.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 18922 387 265
+2021-01-09 06:08:04 182.50.151.89 GET /Content/custom.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 533 388 265
+2021-01-09 06:08:04 182.50.151.89 GET /Content/button.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1861 388 218
+2021-01-09 06:08:04 182.50.151.89 GET /Scripts/jquery-3.2.1.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 39231 383 250
+2021-01-09 06:08:04 182.50.151.89 GET /Scripts/popper.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 9237 377 227
+2021-01-09 06:08:04 182.50.151.89 GET /Scripts/bootstrap.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 19658 380 243
+2021-01-09 06:08:04 182.50.151.89 GET /Content/code_animate.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 10693 394 234
+2021-01-09 06:08:04 182.50.151.89 GET /Content/bootsnav.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 8037 390 234
+2021-01-09 06:08:04 182.50.151.89 GET /Content/all.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 13413 385 234
+2021-01-09 06:08:04 182.50.151.89 GET /Content/carousel-ticker.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 757 397 265
+2021-01-09 06:08:04 182.50.151.89 GET /Content/bootstrap-select.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 2997 398 265
+2021-01-09 06:08:04 182.50.151.89 GET /Content/superslides.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1205 393 265
+2021-01-09 06:08:05 182.50.151.89 GET /Content/owl.carousel.min.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1925 398 218
+2021-01-09 06:08:05 182.50.151.89 GET /Content/baguetteBox.min.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1829 397 234
+2021-01-09 06:08:05 182.50.151.89 GET /Content/jquery-ui.css - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 11973 391 234
+2021-01-09 06:08:05 182.50.151.89 GET /Scripts/jquery.superslides.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 4389 389 234
+2021-01-09 06:08:05 182.50.151.89 GET /Scripts/bootstrap-select.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 22186 383 234
+2021-01-09 06:08:06 182.50.151.89 GET /Scripts/inewsticker.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1157 378 281
+2021-01-09 06:08:06 182.50.151.89 GET /Scripts/bootsnav.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 5925 375 234
+2021-01-09 06:08:08 182.50.151.89 GET /Scripts/images-loded.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 2597 383 218
+2021-01-09 06:08:08 182.50.151.89 GET /Scripts/baguetteBox.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 4533 382 218
+2021-01-09 06:08:08 182.50.151.89 GET /Scripts/isotope.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 13205 378 234
+2021-01-09 06:08:08 182.50.151.89 GET /Scripts/jquery-ui.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 11477 376 234
+2021-01-09 06:08:08 182.50.151.89 GET /Scripts/form-validator.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 2965 385 234
+2021-01-09 06:08:08 182.50.151.89 GET /Scripts/owl.carousel.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 15429 383 234
+2021-01-09 06:08:08 182.50.151.89 GET /Scripts/contact-form-script.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1173 386 296
+2021-01-09 06:08:09 182.50.151.89 GET /Scripts/custom.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 2117 373 233
+2021-01-09 06:08:09 182.50.151.89 GET /Scripts/jquery.signalR-2.4.1.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 16586 391 233
+2021-01-09 06:08:09 182.50.151.89 GET /Scripts/jquery.nicescroll.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 22362 388 249
+2021-01-09 06:08:09 182.50.151.89 GET /plugins/bootstrap-select-1.13.12/js/bootstrap-select.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 20090 415 249
+2021-01-09 06:08:09 182.50.151.89 GET /plugins/bootstrap-select-1.13.12/js/i18n/defaults-en_US.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1029 418 280
+2021-01-09 06:08:09 182.50.151.89 GET /Scripts/button.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 645 373 312
+2021-01-09 06:08:09 182.50.151.89 GET /roboto/TodaySHOP-Bold.otf - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/Content/style.css sairosiyahat.com 200 0 0 18346 427 218
+2021-01-09 06:08:10 182.50.151.89 GET /signalr/hubs - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 4378 368 640
+2021-01-09 06:08:11 182.50.151.89 GET /DataTables/datatables.min.js - 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 1401897 384 2046
+2021-01-09 06:08:14 182.50.151.89 GET /signalr/negotiate clientProtocol=2.1&connectionData=%5B%7B%22name%22%3A%22chatnotification%22%7D%5D&_=1610172486728 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 826 568 578
+2021-01-09 06:08:15 182.50.151.89 GET /signalr/start transport=webSockets&clientProtocol=2.1&connectionToken=Xdr57%2BWXCNzvAdLx%2FkI5Dl03WOENHnwcIrUE1CS7T2bn66D88KAKHJtE1H0sDSxa4HR7xqO9IXwcmbRyz58MX%2FU2MYWsllVb5Mz17X55JhyWvJImBW%2FsEBNT0hA%2FzLQ8&connectionData=%5B%7B%22name%22%3A%22chatnotification%22%7D%5D&_=1610172486729 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b https://sairosiyahat.com/ sairosiyahat.com 200 0 0 458 740 265
+2021-01-09 06:08:19 182.50.151.89 POST /signalr/abort transport=webSockets&clientProtocol=2.1&connectionToken=Xdr57%2BWXCNzvAdLx%2FkI5Dl03WOENHnwcIrUE1CS7T2bn66D88KAKHJtE1H0sDSxa4HR7xqO9IXwcmbRyz58MX%2FU2MYWsllVb5Mz17X55JhyWvJImBW%2FsEBNT0hA%2FzLQ8&connectionData=%5B%7B%22name%22%3A%22chatnotification%22%7D%5D 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.3;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+HeadlessChrome/80.0.3987.16+Safari/537.36+Edg/80.0.361.9 https://sairosiyahat.com/ sairosiyahat.com 200 0 64 0 825 218
+2021-01-09 06:08:19 182.50.151.89 GET /signalr/connect transport=webSockets&clientProtocol=2.1&connectionToken=Xdr57%2BWXCNzvAdLx%2FkI5Dl03WOENHnwcIrUE1CS7T2bn66D88KAKHJtE1H0sDSxa4HR7xqO9IXwcmbRyz58MX%2FU2MYWsllVb5Mz17X55JhyWvJImBW%2FsEBNT0hA%2FzLQ8&connectionData=%5B%7B%22name%22%3A%22chatnotification%22%7D%5D&tid=3 443 - 40.77.190.59 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+WOW64)+AppleWebKit/534++(KHTML,+like+Gecko)+BingPreview/1.0b - sairosiyahat.com 101 0 64 426 750 4343
+2021-01-09 06:23:12 182.50.151.89 GET /robots.txt - 443 - 185.191.171.20 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 265
+2021-01-09 06:23:14 182.50.151.89 GET /Home/OfferDetail id=6 443 - 185.191.171.16 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 7349 311 484
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 07:46:05
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 07:46:05 182.50.151.89 GET /img/subcategory/9202402863.png - 443 - 66.249.79.150 HTTP/1.1 Googlebot-Image/1.0 - sairosiyahat.com 304 0 0 245 260 967
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 08:16:02
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 08:16:02 182.50.151.89 GET /robots.txt - 80 - 192.71.2.171 HTTP/1.1 Go-http-client/1.1 - sairosiyahat.com 301 0 0 436 126 312
+2021-01-09 08:16:03 182.50.151.89 GET /robots.txt - 443 - 192.71.225.127 HTTP/1.1 Go-http-client/1.1 http://sairosiyahat.com/robots.txt sairosiyahat.com 404 0 2 1509 171 187
+2021-01-09 08:16:03 182.50.151.89 GET /humans.txt - 80 - 192.36.71.133 HTTP/1.1 Go-http-client/1.1 - sairosiyahat.com 301 0 0 436 126 191
+2021-01-09 08:16:04 182.50.151.89 GET /humans.txt - 443 - 192.71.38.71 HTTP/1.1 Go-http-client/1.1 http://sairosiyahat.com/humans.txt sairosiyahat.com 404 0 2 1509 171 187
+2021-01-09 08:16:04 182.50.151.89 GET /ads.txt - 80 - 192.71.30.89 HTTP/1.1 Go-http-client/1.1 - sairosiyahat.com 301 0 0 430 123 187
+2021-01-09 08:16:05 182.50.151.89 GET /ads.txt - 443 - 192.71.38.71 HTTP/1.1 Go-http-client/1.1 http://sairosiyahat.com/ads.txt sairosiyahat.com 404 0 2 1509 165 201
+2021-01-09 08:16:14 182.50.151.89 GET / - 80 - 192.71.103.173 HTTP/1.1 Go-http-client/1.1 - sairosiyahat.com 301 0 0 416 116 7360
+2021-01-09 08:16:33 182.50.151.89 GET / - 443 - 192.71.126.175 HTTP/1.1 Go-http-client/1.1 http://sairosiyahat.com/ sairosiyahat.com 200 0 64 0 151 18817
+2021-01-09 08:23:27 182.50.151.89 GET / - 80 - 67.207.199.12 HTTP/1.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/80.0.3987.122+Safari/537.36 - sairosiyahat.com 301 0 0 397 455 469
+2021-01-09 08:23:28 182.50.151.89 GET / - 443 - 67.207.199.12 HTTP/1.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/80.0.3987.122+Safari/537.36 - sairosiyahat.com 200 0 0 12341 459 390
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 08:43:33
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 08:43:32 182.50.151.89 GET /robots.txt - 443 - 185.191.171.19 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 250
+2021-01-09 08:43:50 182.50.151.89 GET /General/UseOfInformation - 443 - 185.191.171.17 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 7317 314 16455
+2021-01-09 08:50:53 182.50.151.89 GET /Home/Shop filter=4&vendorId=ac9e6c98-a9a5-4608-b948-ce094425797d 443 - 185.191.171.34 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 9285 354 953
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 09:44:30
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 09:44:29 182.50.151.89 GET /robots.txt - 443 - 185.191.171.35 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 312
+2021-01-09 09:44:31 182.50.151.89 GET /Home/OfferDetail id=4 443 - 185.191.171.34 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 7333 311 906
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 10:20:07
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 10:20:06 182.50.151.89 GET /Home/Shop filter=2&subCategoryId=2 443 - 54.36.148.12 HTTP/1.1 Mozilla/5.0+(compatible;+AhrefsBot/7.0;++http://ahrefs.com/robot/) - sairosiyahat.com 200 0 0 9701 205 625
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 10:51:27
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 10:51:27 182.50.151.89 GET /robots.txt - 443 - 185.191.171.7 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 312
+2021-01-09 10:51:29 182.50.151.89 GET /Home/Shop filter=4&vendorId=5f4971bc-c34d-413d-9389-83f58cf8c656 443 - 185.191.171.24 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 10437 354 587
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 11:50:49
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 11:50:49 182.50.151.89 GET /robots.txt - 80 - 157.55.39.31 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 301 0 0 417 249 328
+2021-01-09 11:50:50 182.50.151.89 GET /robots.txt - 443 - 157.55.39.31 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 404 0 2 1477 249 171
+2021-01-09 11:51:01 182.50.151.89 GET / - 80 - 157.55.39.229 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 301 0 0 397 239 2671
+2021-01-09 12:02:55 182.50.151.89 GET /Blog/Detail id=5 443 - 66.249.79.148 HTTP/1.1 Mozilla/5.0+(Linux;+Android+6.0.1;+Nexus+5X+Build/MMB29P)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.90+Mobile+Safari/537.36+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) - sairosiyahat.com 200 0 0 21354 506 8937
+2021-01-09 12:03:01 182.50.151.89 GET /Content/baguetteBox.min.css - 443 - 66.249.79.150 HTTP/1.1 Mozilla/5.0+(Linux;+Android+6.0.1;+Nexus+5X+Build/MMB29P)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.90+Mobile+Safari/537.36+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) https://sairosiyahat.com/Content/style.css sairosiyahat.com 200 0 0 5717 478 171
+2021-01-09 12:03:02 182.50.151.89 GET /Scripts/bootsnav.js - 443 - 66.249.79.146 HTTP/1.1 Mozilla/5.0+(Linux;+Android+6.0.1;+Nexus+5X+Build/MMB29P)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.90+Mobile+Safari/537.36+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) https://sairosiyahat.com/Blog/Detail?id=5 sairosiyahat.com 200 0 0 28234 454 156
+2021-01-09 12:03:06 182.50.151.89 GET /signalr/connect transport=serverSentEvents&clientProtocol=2.1&connectionToken=Dq%2FHpynfgyHrhcM4HlMJN7Q5HF2cSFGHavBc%2F8qX0Q9JvHnoBuicbATpVCUzivy%2BAqXTH3iNf2pgafdsyztUmlh9zOchptpKmw02HY4jO2KRc81Xx5YlrCfyrGqEGfLd&connectionData=%5B%7B%22name%22%3A%22chatnotification%22%7D%5D&tid=9 443 - 66.249.79.146 HTTP/1.1 Mozilla/5.0+(Linux;+Android+6.0.1;+Nexus+5X+Build/MMB29P)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.90+Mobile+Safari/537.36+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) https://sairosiyahat.com/Blog/Detail?id=5 sairosiyahat.com 400 0 0 474 755 2250
+2021-01-09 12:03:07 182.50.151.89 POST /signalr/connect transport=longPolling&clientProtocol=2.1&connectionToken=Dq%2FHpynfgyHrhcM4HlMJN7Q5HF2cSFGHavBc%2F8qX0Q9JvHnoBuicbATpVCUzivy%2BAqXTH3iNf2pgafdsyztUmlh9zOchptpKmw02HY4jO2KRc81Xx5YlrCfyrGqEGfLd&connectionData=%5B%7B%22name%22%3A%22chatnotification%22%7D%5D 443 - 66.249.79.148 HTTP/1.1 Mozilla/5.0+(Linux;+Android+6.0.1;+Nexus+5X+Build/MMB29P)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.90+Mobile+Safari/537.36+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) https://sairosiyahat.com/Blog/Detail?id=5 sairosiyahat.com 400 0 0 474 876 188
+2021-01-09 12:03:08 182.50.151.89 POST /signalr/abort transport=longPolling&clientProtocol=2.1&connectionToken=Dq%2FHpynfgyHrhcM4HlMJN7Q5HF2cSFGHavBc%2F8qX0Q9JvHnoBuicbATpVCUzivy%2BAqXTH3iNf2pgafdsyztUmlh9zOchptpKmw02HY4jO2KRc81Xx5YlrCfyrGqEGfLd&connectionData=%5B%7B%22name%22%3A%22chatnotification%22%7D%5D 443 - 66.249.79.146 HTTP/1.1 Mozilla/5.0+(Linux;+Android+6.0.1;+Nexus+5X+Build/MMB29P)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.90+Mobile+Safari/537.36+(compatible;+Googlebot/2.1;++http://www.google.com/bot.html) https://sairosiyahat.com/Blog/Detail?id=5 sairosiyahat.com 400 0 0 474 857 156
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 12:27:34
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 12:27:33 182.50.151.89 GET /admin/index.php - 80 - 34.87.75.145 HTTP/1.1 Mozilla/5.0+(X11;+Ubuntu;+Linux+i686;+rv:28.0)+Gecko/20100101+Firefox/28.0 - sairosiyahat.com 301 0 0 427 214 78
+2021-01-09 12:27:35 182.50.151.89 GET /admin/index.php - 443 - 34.87.75.145 HTTP/1.1 Mozilla/5.0+(X11;+Ubuntu;+Linux+i686;+rv:28.0)+Gecko/20100101+Firefox/28.0 - sairosiyahat.com 404 0 2 1477 214 0
+2021-01-09 12:41:53 182.50.151.89 GET /robots.txt - 443 - 185.191.171.37 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 357
+2021-01-09 12:41:56 182.50.151.89 GET /Home/Shop filter=4&vendorId=fd07a159-afe6-46e7-8e27-1904baaca1aa 443 - 185.191.171.21 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 9285 354 1109
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 14:15:54
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 14:15:53 182.50.151.89 GET /robots.txt - 443 - 185.191.171.45 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 343
+2021-01-09 14:16:05 182.50.151.89 GET /Blog/Detail id=6 443 - 185.191.171.44 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 6053 306 10671
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 15:15:12
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 15:15:11 182.50.151.89 GET /Home/Shop filter=4&vendorId=edc31d68-f18e-4f74-8ed5-d575910ca2a8 443 - 185.191.171.44 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 9285 354 921
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 15:50:31
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 15:50:30 182.50.151.89 GET /img/Banner/banner+5202627302.png - 443 - 13.66.139.65 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 200 0 0 1710834 305 4734
+2021-01-09 16:04:00 182.50.151.89 HEAD / - 443 - 138.246.253.24 HTTP/1.1 Mozilla/5.0+(Windows+NT+6.1;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/40.0.2214.85+Safari/537.36 - sairosiyahat.com 200 0 0 325 170 718
+2021-01-09 16:06:31 182.50.151.89 GET /img/User/abstract-cross-logo_23-2147536124202959910.jpg - 443 - 13.66.139.29 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 200 0 0 23946 326 186
+2021-01-09 16:12:43 182.50.151.89 GET /robots.txt - 443 - 185.191.171.20 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 235
+2021-01-09 16:12:45 182.50.151.89 GET /Home/Shop filter=4&vendorId=3f48aabf-5e64-4b94-b50b-c99b98721f63 443 - 185.191.171.15 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 9285 354 562
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 16:31:33
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 16:31:33 182.50.151.89 GET /Home/OfferDetail id=3 443 - 185.191.171.6 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 7333 311 687
+2021-01-09 16:45:30 182.50.151.89 GET / - 443 - 54.36.148.165 HTTP/1.1 Mozilla/5.0+(compatible;+AhrefsBot/7.0;++http://ahrefs.com/robot/) - sairosiyahat.com 200 0 0 12341 171 453
+2021-01-09 16:47:36 182.50.151.89 GET /img/User/1_1x203923035.png - 443 - 59.152.97.146 HTTP/1.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.141+Safari/537.36 https://www.google.com/ sairosiyahat.com 200 0 0 9573 460 157
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 17:24:56
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 17:24:55 182.50.151.89 GET / - 443 - 51.158.108.77 HTTP/1.1 - - sairosiyahat.com 200 0 0 59556 69 576
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 18:08:40
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 18:08:40 182.50.151.89 GET /wp-includes/css/css.php - 80 - 82.165.185.18 HTTP/1.1 python-requests/2.25.0 - sairosiyahat.com 301 0 0 443 170 279
+2021-01-09 18:08:54 182.50.151.89 GET /wp-includes/css/css.php - 443 - 82.165.185.18 HTTP/1.1 python-requests/2.25.0 - sairosiyahat.com 404 0 2 1477 170 172
+2021-01-09 18:09:12 182.50.151.89 GET /wp-includes/fonts/css.php - 80 - 82.165.185.18 HTTP/1.1 python-requests/2.25.0 - sairosiyahat.com 301 0 0 447 172 218
+2021-01-09 18:09:27 182.50.151.89 GET /wp-includes/fonts/css.php - 443 - 82.165.185.18 HTTP/1.1 python-requests/2.25.0 - sairosiyahat.com 404 0 2 1477 172 156
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 18:48:35
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 18:48:34 182.50.151.89 GET /img/User/1_1x203923035.png - 443 - 105.112.187.9 HTTP/1.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/87.0.4280.88+Safari/537.36 https://www.google.com/ sairosiyahat.com 200 0 0 9573 566 531
+2021-01-09 19:03:33 182.50.151.89 GET /img/User/retro-label-on-rustic-background_82147503374203329733.jpg - 443 - 157.55.39.229 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 200 0 0 157415 305 515
+2021-01-09 19:04:59 182.50.151.89 GET /wp-content/plugins/ioptimization/IOptimize.php rchk 80 - 104.214.79.46 HTTP/1.1 Mozlila/5.0+(Linux;+Android+7.0;+SM-G892A+Bulid/NRD90M;+wv)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Version/4.0+Chrome/60.0.3112.107+Moblie+Safari/537.36 www.google.com sairosiyahat.com 301 0 0 499 533 249
+2021-01-09 19:05:09 182.50.151.89 GET /wp-content/plugins/ioptimization/IOptimize.php rchk 443 - 104.214.79.46 HTTP/1.1 Mozlila/5.0+(Linux;+Android+7.0;+SM-G892A+Bulid/NRD90M;+wv)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Version/4.0+Chrome/60.0.3112.107+Moblie+Safari/537.36 www.google.com sairosiyahat.com 404 0 2 1477 533 203
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 19:35:38
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 19:35:38 182.50.151.89 GET /robots.txt - 443 - 185.191.171.37 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 328
+2021-01-09 19:35:39 182.50.151.89 GET /General/Limitation - 443 - 185.191.171.17 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 6901 308 500
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 20:07:14
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 20:07:13 182.50.151.89 GET /img/User/retro-label-on-rustic-background_82147503374203329733.jpg - 443 - 13.66.139.65 HTTP/1.1 Mozilla/5.0+(compatible;+bingbot/2.0;++http://www.bing.com/bingbot.htm) - sairosiyahat.com 200 0 0 157415 337 640
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 20:23:51
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 20:23:50 182.50.151.89 GET /Account/Register - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 - sairosiyahat.com 200 0 0 7669 389 14419
+2021-01-09 20:23:51 182.50.151.89 GET /Content/bootstrap.min.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 39615 498 234
+2021-01-09 20:23:53 182.50.151.89 GET /Content/style.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 18922 490 203
+2021-01-09 20:23:53 182.50.151.89 GET /Content/responsive.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 1797 495 203
+2021-01-09 20:23:53 182.50.151.89 GET /Content/custom.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 533 491 187
+2021-01-09 20:23:53 182.50.151.89 GET /Content/button.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 1861 491 203
+2021-01-09 20:23:53 182.50.151.89 GET /plugins/bootstrap-select-1.13.12/css/bootstrap-select.min.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 3077 534 187
+2021-01-09 20:23:53 182.50.151.89 GET /plugins/toastr/toastr.min.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 4085 502 203
+2021-01-09 20:23:54 182.50.151.89 GET /Content/all.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 13413 488 203
+2021-01-09 20:23:54 182.50.151.89 GET /Content/superslides.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 1205 496 187
+2021-01-09 20:23:54 182.50.151.89 GET /Content/bootstrap-select.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 2997 501 187
+2021-01-09 20:23:54 182.50.151.89 GET /Scripts/jquery-3.2.1.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 39231 485 203
+2021-01-09 20:23:54 182.50.151.89 GET /Content/carousel-ticker.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 757 500 187
+2021-01-09 20:23:54 182.50.151.89 GET /Content/code_animate.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 10693 497 218
+2021-01-09 20:23:54 182.50.151.89 GET /Content/bootsnav.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 8037 493 187
+2021-01-09 20:23:54 182.50.151.89 GET /Content/owl.carousel.min.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 1925 501 187
+2021-01-09 20:23:55 182.50.151.89 GET /Content/jquery-ui.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 11973 494 203
+2021-01-09 20:23:55 182.50.151.89 GET /Content/baguetteBox.min.css - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 1829 500 187
+2021-01-09 20:23:55 182.50.151.89 GET /images/facebook.png - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 10597 513 203
+2021-01-09 20:23:55 182.50.151.89 GET /images/instagram-sketched.png - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 60868 523 375
+2021-01-09 20:23:56 182.50.151.89 GET /plugins/jquery/jquery.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 48943 486 233
+2021-01-09 20:23:56 182.50.151.89 GET /Scripts/popper.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 9237 479 203
+2021-01-09 20:23:57 182.50.151.89 GET /Scripts/bootstrap.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 19658 482 203
+2021-01-09 20:23:57 182.50.151.89 GET /Scripts/bootsnav.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 5925 477 187
+2021-01-09 20:23:57 182.50.151.89 GET /Scripts/inewsticker.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 1157 480 187
+2021-01-09 20:23:57 182.50.151.89 GET /Scripts/jquery.superslides.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 4389 491 187
+2021-01-09 20:23:57 182.50.151.89 GET /Scripts/bootstrap-select.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 22186 485 234
+2021-01-09 20:23:57 182.50.151.89 GET /Scripts/images-loded.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 2597 485 186
+2021-01-09 20:23:57 182.50.151.89 GET /images/linkedin.png - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 16810 513 187
+2021-01-09 20:23:57 182.50.151.89 GET /images/twitter.png - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 38175 512 187
+2021-01-09 20:23:57 182.50.151.89 GET /images/youtube2.png - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 13845 513 187
+2021-01-09 20:23:58 182.50.151.89 GET /Scripts/isotope.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 13205 480 203
+2021-01-09 20:23:58 182.50.151.89 GET /Scripts/owl.carousel.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 15429 485 203
+2021-01-09 20:23:58 182.50.151.89 GET /images/sos+1logo.png - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 218267 516 562
+2021-01-09 20:23:58 182.50.151.89 GET /Scripts/jquery-ui.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 11477 478 203
+2021-01-09 20:23:58 182.50.151.89 GET /Scripts/jquery.nicescroll.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 22362 490 203
+2021-01-09 20:23:58 182.50.151.89 GET /Scripts/baguetteBox.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 0 4533 484 167
+2021-01-09 20:23:59 182.50.151.89 GET /Scripts/custom.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 64 0 475 234
+2021-01-09 20:23:59 182.50.151.89 GET /Scripts/contact-form-script.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 64 0 488 187
+2021-01-09 20:23:59 182.50.151.89 GET /Scripts/form-validator.min.js - 443 - 179.43.160.237 HTTP/1.1 Mozilla/5.0+(X11;+Linux+x86_64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/71.0.3563.0+Safari/537.36 https://sairosiyahat.com/Account/Register sairosiyahat.com 200 0 64 0 487 187
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 22:05:23
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 22:05:23 182.50.151.89 GET /robots.txt - 443 - 185.191.171.18 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 293
+2021-01-09 22:05:24 182.50.151.89 GET /General/Definition - 443 - 185.191.171.38 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 8789 308 375
+2021-01-09 22:12:03 182.50.151.89 GET /wp-content/plugins/ioptimization/IOptimize.php rchk 80 - 142.93.190.41 HTTP/1.1 Mozlila/5.0+(Linux;+Android+7.0;+SM-G892A+Bulid/NRD90M;+wv)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Version/4.0+Chrome/60.0.3112.107+Moblie+Safari/537.36 www.google.com sairosiyahat.com 301 0 0 499 533 328
+2021-01-09 22:12:13 182.50.151.89 GET /wp-content/plugins/ioptimization/IOptimize.php rchk 443 - 142.93.190.41 HTTP/1.1 Mozlila/5.0+(Linux;+Android+7.0;+SM-G892A+Bulid/NRD90M;+wv)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Version/4.0+Chrome/60.0.3112.107+Moblie+Safari/537.36 www.google.com sairosiyahat.com 404 0 2 1477 533 265
+#Software: Microsoft Internet Information Services 8.5
+#Version: 1.0
+#Date: 2021-01-09 23:33:53
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2021-01-09 23:33:53 182.50.151.89 GET /robots.txt - 443 - 185.191.171.2 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 404 0 2 1509 204 298
+2021-01-09 23:34:31 182.50.151.89 GET /Home/Shop filter=4&vendorId=d7992165-023c-4f2e-ac57-60618707fcbd 443 - 185.191.171.10 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 9285 354 36781
+2021-01-09 23:42:43 182.50.151.89 GET /Chat - 443 - 185.191.171.21 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 302 0 0 501 294 312
+2021-01-09 23:42:50 182.50.151.89 GET /Account/Login - 443 - 185.191.171.19 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 6933 303 5156
+2021-01-09 23:50:47 182.50.151.89 GET /Home/Shop filter=4&vendorId=c666c228-b687-4612-9c3d-14a69e58e307 443 - 185.191.171.19 HTTP/1.1 Mozilla/5.0+(compatible;+SemrushBot/7~bl;++http://www.semrush.com/bot.html) - sairosiyahat.com 200 0 0 9701 354 500

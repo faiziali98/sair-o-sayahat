@@ -1,0 +1,208 @@
+﻿@model IEnumerable<SAIR_O_SIYAHAT_2.Models.Admin.Banner>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout1.cshtml";
+}
+<style>
+    .fa-eye {
+        cursor: pointer;
+    }
+
+    .modal-title {
+        color: #00b4d8;
+    }
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li style="font-size: 13px;" class="breadcrumb-item"><i class="fas fa-icons"></i>Banners</li>
+                        @if (ViewBag.Title == "Active")
+                        {
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Active Banners</li>
+                        }
+                        else
+                        {
+                        <li style="font-size: 13px;" class="breadcrumb-item active">Blocked Banner</li>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header" style="background-image: linear-gradient(to right, #00b8d4 0%, #00e575 100%);padding: 18px;">
+                @if (ViewBag.Title == "Active")
+                {
+                    <h3 class="card-title">Active Banners</h3>
+                }
+                else
+                {
+                    <h3 class="card-title">Blocked Banners</h3>
+                }
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered responsive nowrap dataTable dtr-inline collapsed" style="width:100%;" id="table_id">
+                    <thead>
+                        <tr>
+                            <th>
+                                Banner Title
+                            </th>
+                            <th>
+                                Banner Logo
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Created at
+                            </th>
+                            <th>
+                                Updated at
+                            </th>
+                            @if (ViewBag.Title == "Active")
+                            {
+                                <th scope="col"> Action</th>
+                            }
+                            else
+                            {
+                                <th scope="col"> Unblock</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderBy(m => m.CreatedAt))
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                <img src="@item.Thumbnail" style="width:80px;height:80px" />
+                            </td>
+                            <td>
+                                <a data-toggle="modal" style="" data-target="#@item.Id-1" class="btn btn-outline-info">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                            @if (item.IsActive == true)
+                            {
+                                <td>
+                                    <span style="background:#25bbb0;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px; ">
+                                        Active
+                                    </span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <span style="background:#ff5f5f;color:white;text-align:center;padding:3px 8px 6px 8px;border-radius:15px; ">
+                                        Blocked
+                                    </span>
+                                </td>
+                            }
+                            <td>@item.CreatedAt.ToString("dd/MM/yyyy hh:mm:ss tt")</td>
+                            @if (item.UpdatedAt.HasValue)
+                            {
+                                <td>@item.UpdatedAt.Value.ToString("dd/MM/yyyy hh:mm:ss tt")</td>
+                            }
+                            else
+                            {
+                                <td>@item.UpdatedAt</td>
+                            }
+                            @if (item.IsActive)
+                            {
+                                <td>
+                                    <a class="btn btn-xs btn-default" href="@Url.Action("Edit",new {id=item.Id })">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-xs btn-outline-danger" href="@Url.Action("Delete",new {id=item.Id })">
+                                        <i class="fas fa-ban" style=""></i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-xs btn-outline-success" href="@Url.Action("ActiveBanner",new {id=item.Id })">
+                                        <i class="fas fa-check-circle"></i>
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                            <!-- The Modal -->
+                            <div class="modal fade" id="@item.Id-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Description</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p>
+                                                <span style="font-weight:500;">Description:</span> @item.Description
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </tbody>
+                </table>
+                <!-- Trigger the modal with a button -->
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script>
+    $("#banner-menu").addClass("menu-open");
+</script>
+<script>
+    if ("@ViewBag.bannerAdded" == "success")
+    {
+        swal("", "Banner Published Successfully", "success");
+    }
+    if ("@ViewBag.bannerDeactivation" == "success")
+    {
+        swal("", "Banner Deactivated Successfully", "success");
+    }
+    if ("@ViewBag.bannerActivation" == "success")
+    {
+        swal("", "Banner Activated Successfully", "success");
+    }
+    if ("@ViewBag.bannerupdated" == "success")
+    {
+        swal("", "Banner Updated Successfully", "success");
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            "ordering": false
+        });
+    });
+</script>
